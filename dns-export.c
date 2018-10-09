@@ -11,6 +11,8 @@
 #include <stdbool.h>
 #include <time.h>
 #include <sys/time.h>
+#include <pcap/pcap.h>
+#include <arpa/inet.h>
 
 #define BUFSIZE 128
 
@@ -29,6 +31,8 @@ void dealloc(char* pcap,char* syslog,char* interface);
  * and save to pointer
  * **/
 void getFormatTime(char* timestamp);
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_body);
+void packet_handler(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
 
 int main (int argc,char * argv[]) {
 
@@ -38,11 +42,17 @@ int main (int argc,char * argv[]) {
 		printf("argv[%d]:%s\n",i,argv[i]);
 	}
 
+	
 */
+
+    char error_buffer[PCAP_ERRBUF_SIZE]; /* Size defined in pcap.h */
+
 /****************************** PARSING ARGUMENTS ***********************
 [-r file.pcap] [-i interface] [-s syslog-server] [-t seconds]
 -r string.pcap -i string -s ip string -t int
 */
+
+
 	int runTime=60;
 	char*  interface = NULL;
 	char* pcapFile = NULL;
@@ -57,7 +67,7 @@ int main (int argc,char * argv[]) {
 
 	if(argc%2==0)	//pouze lichy pocet parametru
 	{
-		printf("Spatny pocet argumentu!");
+		fprintf(stderr,"Spatny pocet argumentu!");
 		dealloc(pcapFile,syslog_ip,interface);
 		return 1;
 	}
@@ -99,7 +109,7 @@ int main (int argc,char * argv[]) {
 		switch(lastOpt)
 		{
 			case 'x':
-				printf("\nChybne zadane parametry!");
+				fprintf(stderr,"\nChybne zadane parametry!");
 				dealloc(pcapFile,syslog_ip,interface);
 				return 1;
 
@@ -107,7 +117,7 @@ int main (int argc,char * argv[]) {
 			{
 				interface=(char*)malloc(sizeof(char)*strlen(argv[i]));
 				strcpy(interface,argv[i]);
-				printf("\n-i = %s",interface);
+				//printf("\n-i = %s",interface);
 				lastOpt='x';
 				break;
 			}
@@ -115,7 +125,7 @@ int main (int argc,char * argv[]) {
 			{
 				syslog_ip=(char*)malloc(sizeof(char)*strlen(argv[i]));
 				strcpy(syslog_ip,argv[i]);
-				printf("\n-s = %s",syslog_ip);
+				//printf("\n-s = %s",syslog_ip);
 				lastOpt='x';
 				break;
 			}
@@ -124,18 +134,18 @@ int main (int argc,char * argv[]) {
 				runTime=strtol(argv[i],&helppointer,10);
 				if((strcmp(helppointer,"")!=0)||(runTime<0))
 				{
-					printf("Prepinac -t musi obsahovat kladne cislo!\n");
+					fprintf(stderr,"Prepinac -t musi obsahovat kladne cislo!\n");
 					dealloc(pcapFile,syslog_ip,interface);
 					return 1;
 				}
-				printf("\n-t = %d",runTime);
+				//printf("\n-t = %d",runTime);
 				break;
 			}
 			case 'r':
 			{
 				pcapFile=(char*)malloc(sizeof(char)*strlen(argv[i]));
 				strcpy(pcapFile,argv[i]);
-				printf("\n-r = %s",pcapFile);
+				//printf("\n-r = %s",pcapFile);
 				break;
 			}
 		}
@@ -143,14 +153,85 @@ int main (int argc,char * argv[]) {
 
 
 	}
+
+	if(iFlag && rFlag) //-r a -i se vzajemne vylucuji
+	{
+		fprintf(stderr,"Prepinace i a r se vzajemne vylucuji!\n");
+		dealloc(pcapFile,syslog_ip,interface);
+		return 1;
+	}
+
+	if((iFlag || rFlag)==false) // musi byt zadan -r nebo -i
+	{
+		fprintf(stderr,"Musite zadat bud soubor -r nebo interface -i!\n");
+		dealloc(pcapFile,syslog_ip,interface);
+		return 1;
+	}
 /***********************************END OF PARSING ARGUMENTS************************************/
 
+	if(rFlag)
+	{
+    		pcap_t *handle = pcap_open_offline(pcapFile, error_buffer);    
+		struct bpf_program filter;
+    		char filter_exp[] = "port 53";
+    		bpf_u_int32 ip;
+
+  		if (pcap_compile(handle, &filter, filter_exp, 0, ip) == -1) {
+        		fprintf(stderr,"Spatny filtr: %s\n", pcap_geterr(handle));
+			dealloc(pcapFile,syslog_ip,interface);
+        		return 1;
+    		}
+    		if (pcap_setfilter(handle, &filter) == -1) {
+        		fprintf(stderr,"Spatne nastaveny filtr:%s\n", pcap_geterr(handle));
+			dealloc(pcapFile,syslog_ip,interface);
+        		return 1;
+    		}
+
+		pcap_loop(handle, 0, packet_handler, NULL);
+
+	}
+	if(iFlag)
+	{
+ 		pcap_t *handle;
+
+    		/* Open device for live capture */
+    		handle = pcap_open_live(interface,BUFSIZ,0,runTime,error_buffer);
+    		if (handle == NULL) {
+         		fprintf(stderr, "Could not open interface %s: %s\n", interface, error_buffer);
+         	return 2;
+     		}
+     
+    		pcap_loop(handle, 0, packet_handler, NULL);
+	
+	
+	}	
+
+ 
+
+/***********time stampg and end *************************************/
 	char cas[25];
 	getFormatTime(cas);
 	printf("\nCAS:%s",cas);
 
 	dealloc(pcapFile,syslog_ip,interface);
 }
+
+void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u_char *packet_body)
+{
+    	print_packet_info(packet_body, *packet_header);
+    	return;
+}
+
+
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header) {
+	printf("Domena:");
+	for(unsigned int i=54;i<packet_header.len-4;i++)
+	{
+		printf("%c",packet[i]);
+	}
+    	printf("\nPacket total length %d\n", packet_header.len);
+}
+
 
 void getFormatTime(char* timestamp)
 {
