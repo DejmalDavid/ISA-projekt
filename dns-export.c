@@ -33,6 +33,8 @@ void dealloc(char* pcap,char* syslog,char* interface);
 void getFormatTime(char* timestamp);
 void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_body);
 void packet_handler(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
+void TypeDNS(char* typ,int value1,int value0);
+void get_name(const u_char *packet_body,char * text,int pozice);
 
 int main (int argc,char * argv[]) {
 
@@ -212,24 +214,118 @@ int main (int argc,char * argv[]) {
 	char cas[25];
 	getFormatTime(cas);
 	printf("\nCAS:%s",cas);
+	if(tFlag||sFlag)
+	{
+		printf("muhehe");
+	}
 
 	dealloc(pcapFile,syslog_ip,interface);
 }
 
 void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u_char *packet_body)
 {
-    	print_packet_info(packet_body, *packet_header);
+	//printf("Flags:%02x\n",packet_body[44]);
+	char typ[]="UNKNOWN";
+	char dotaz[258];  //max lenght of dns name
+	int lenght=0;
+	int answers;
+	int counter=0;
+	int pozice=44;
+	int pointer=42;
+	char name[258];
+	//it is response - first bit of flags is 1
+	if(packet_body[pozice]>=0x80)
+	{
+		//printf("Type:%02x %02x\n",packet_body[83],packet_body[84]);
+		answers = 256 * packet_body[pozice+4] + packet_body[pozice+5];
+		printf("Answer count:%d\n",answers);
+		pozice=54;
+		for(int i=pozice;;i++)
+		{	
+			pozice++;	
+			if(packet_body[i]==0x00)
+			{
+				break;
+			}		
+		}
+		printf("Pozice:%d hodnota:%02x\n",pozice,packet_body[pozice+1]);
+		TypeDNS(typ,packet_body[pozice],packet_body[pozice+1]);
+		printf("Type:%s\n",typ);
+		if(strcmp(typ,"UNKNOWN")==0)
+		{
+			return;
+		}
+		if(answers==1)
+		{
+			pozice=pozice+4;
+			pointer=((packet_body[pozice]-0xc0)*256+packet_body[pozice+1])+pointer;
+			printf("Pointer:%02x %02x = %d\n",packet_body[pozice],packet_body[pozice+1],pointer);	
+			//printf("Pointer cil:%02x\n",packet_body[pointer]);
+			get_name(packet_body,name,pointer);
+			//pozice=pozice+2;
+			printf("Name:%s",name);
+
+		}
+		print_packet_info(packet_body, *packet_header);
+	}
     	return;
+}
+
+void get_name(const u_char *packet_body,char * text,int pozice)
+{
+int counter=0;
+int lenght=0;
+for(unsigned int i=pozice;counter>=0;i++)
+	{		
+		if(packet_body[i]==0x00)
+		{
+			break;
+		}
+		if(counter==0)
+		{
+			counter=packet_body[i]+1;
+			if(lenght!=0)
+			{
+				text[lenght]='.';
+			}
+			else
+			{
+				lenght--;
+			}
+		}
+		else
+		{	
+			text[lenght]=packet_body[i];
+		
+		}
+		counter--;
+		lenght++;
+	}
 }
 
 
 void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header) {
-	printf("Domena:");
-	for(unsigned int i=54;i<packet_header.len-4;i++)
+    	printf("Packet total length %d\n\n", packet_header.len);
+}
+
+
+void TypeDNS(char* typ,int value1,int value0)
+{
+	int value;
+	value = value1 *256 + value0;
+	switch(value)
 	{
-		printf("%c",packet[i]);
+		case 1:strcpy(typ,"A");break;
+		case 28:strcpy(typ,"AAAA");break;
+		case 5:strcpy(typ,"CNAME");break;
+		case 15:strcpy(typ,"MX");break;
+		case 2:strcpy(typ,"NS");break;
+		case 6:strcpy(typ,"SOA");break;
+		case 16:strcpy(typ,"TXT");break;
+		case 99:strcpy(typ,"SPF");break;
+		case 32768:strcpy(typ,"DNSSEC");break;
 	}
-    	printf("\nPacket total length %d\n", packet_header.len);
+	printf("Vlaue:%d\n",value);
 }
 
 
