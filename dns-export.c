@@ -34,7 +34,7 @@ void getFormatTime(char* timestamp);
 void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_body);
 void packet_handler(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
 void TypeDNS(char* typ,int value1,int value0);
-void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr);
+void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr,char* type);
 
 int main (int argc,char * argv[]) {
 
@@ -249,25 +249,22 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 
 		for(int i=1;i<=answers;i++)
 		{
-	
-			get_name(packet_body,name,pozice,0,true);
-			printf("Name:%s\n",name);
+			strcpy(typ,"UNKNOWN");
+			printf("Answer no:%d\n",i);
+			get_name(packet_body,name,pozice,0,true,typ);
+			//printf("Name:%s\n",name);
 			pozice=pozice+2;
 
 			TypeDNS(typ,packet_body[pozice],packet_body[pozice+1]);
-			printf("Type:%s\n",typ);
-			/**if(strcmp(typ,"UNKNOWN")==0)
-			{
-				return;
-			}
-			*/
+			//printf("Type:%s\n",typ);
 			pozice=pozice+8;
 			dataLenght=256 * packet_body[pozice] + packet_body[pozice+1];
 			//printf("Data lenght:%d\n",dataLenght);
 			pozice=pozice+2;
-			get_name(packet_body,response,pozice,0,false);
-			printf("response:%s\n",response);
+			get_name(packet_body,response,pozice,0,false,typ);
+			//printf("response:%s\n",response);
 			pozice=pozice+dataLenght;
+			printf("%s %s %s\n",name,typ,response);
 
 		}
 		print_packet_info(packet_body, *packet_header);
@@ -275,21 +272,65 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
     	return;
 }
 
-void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr)
+void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr,char* type)
 {
-	memset(text, 0, 255);
 	int counter=0;
 	int lenght=index;
 	int pointer;
+	if(lenght==0)
+	{
+		memset(text, 0, 258);
+	}
 	if(ptr)
 	{
 		pointer=((packet_body[pozice]-0xc0)*256+packet_body[pozice+1])+42;
-		printf("Pointer:%02x %02x = %d\n",packet_body[pozice],packet_body[pozice+1],pointer);
+	//	printf("Pointer:%02x %02x = %d\n",packet_body[pozice],packet_body[pozice+1],pointer);
 	}
 	else
 	{
 		pointer=pozice;
 	}
+	if(strcmp("A",type)==0)
+	{
+		//printf("IP 4-");
+		char buffer[5];
+		memset(buffer,0,5);
+		for(int i = pointer;i<pointer+4;i++)
+		{
+			if(i==pointer+3)
+			{
+				sprintf(buffer,"%d",packet_body[i]);
+			}
+			else
+			{
+				sprintf(buffer,"%d.",packet_body[i]);
+			}
+			strcat(text,buffer);
+		}
+		//printf("\n");
+		return;
+	}
+	if(strcmp("AAAA",type)==0)
+	{
+		char buffer[7];
+		memset(buffer,0,7);
+		//printf("IP 6-");
+		for(int i = pointer;i<pointer+16;i=i+2)
+		{
+			if(i==pointer+14)
+			{
+				sprintf(buffer,"%02x%02x",packet_body[i],packet_body[i+1]);
+			}
+			else
+			{
+				sprintf(buffer,"%02x%02x:",packet_body[i],packet_body[i+1]);
+			}
+			strcat(text,buffer);
+		}
+		inet_pton(AF_INET6,text,&text);
+		return;
+	}
+
 	for(unsigned int i=pointer;counter>=0;i++)
 	{		
 		if(packet_body[i]==0x00)
@@ -298,8 +339,10 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 		}
 		if(packet_body[i]>=0xc0)
 		{
-			printf("PTR");
+			//printf("PTR\n");
+			get_name(packet_body,text,i,lenght,true,type);
 			break;
+
 		}
 		if(counter==0)
 		{
