@@ -14,6 +14,7 @@
 #include <pcap/pcap.h>
 #include <arpa/inet.h>
 #include <signal.h>
+#include <unistd.h>
 
 #define BUFSIZE 128
 
@@ -25,7 +26,7 @@ typedef struct prvek
 }Prvek;
 
 Prvek *root;
-
+int runTime;
 /**Poznamky:
  *
  * every end of main must end like this:
@@ -48,10 +49,12 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 void smaz_vse();
 bool add_prvek(char * req,char* typ,char *answer);
 void signal_handler(int signum);
+void alarm_handler();
 
 int main (int argc,char * argv[]) {
 
 	signal(SIGINT, signal_handler);	//TODO change to sigusr1
+	signal(SIGALRM, alarm_handler);
 
 /*	printf("argc:%d\n",argc);
 	for(int i=1;i<argc;i++)
@@ -70,7 +73,7 @@ int main (int argc,char * argv[]) {
 */
 
 
-	int runTime=60;
+	runTime=60;
 	char*  interface = NULL;
 	char* pcapFile = NULL;
 	char* syslog_ip = NULL;
@@ -184,13 +187,15 @@ int main (int argc,char * argv[]) {
 		dealloc(pcapFile,syslog_ip,interface);
 		return 1;
 	}
-	if(iFlag && tFlag) // musi byt zadan -r nebo -i
+	if(rFlag && tFlag) // musi byt zadan -r nebo -i
 	{
 		fprintf(stderr,"Prepinace r a t se vzajemne vylucuji!\n");
 		dealloc(pcapFile,syslog_ip,interface);
 		return 1;
 	}
 /***********************************END OF PARSING ARGUMENTS************************************/
+	
+	alarm(runTime);
 
 	if(rFlag)
 	{
@@ -225,6 +230,9 @@ int main (int argc,char * argv[]) {
 	if(iFlag)
 	{
  		pcap_t *handle;
+     		struct bpf_program filter;
+    		char filter_exp[] = "port 53 and udp";
+    		bpf_u_int32 ip;
 
     		/* Open device for live capture */
     		handle = pcap_open_live(interface,BUFSIZ,0,runTime,error_buffer);
@@ -232,7 +240,19 @@ int main (int argc,char * argv[]) {
          		fprintf(stderr, "Could not open interface %s: %s\n", interface, error_buffer);
          	return 2;
      		}
-     
+
+
+  		if (pcap_compile(handle, &filter, filter_exp, 0, ip) == -1) {
+        		fprintf(stderr,"Spatny filtr: %s\n", pcap_geterr(handle));
+			dealloc(pcapFile,syslog_ip,interface);
+        		return 1;
+    		}
+    		if (pcap_setfilter(handle, &filter) == -1) {
+        		fprintf(stderr,"Spatne nastaveny filtr:%s\n", pcap_geterr(handle));
+			dealloc(pcapFile,syslog_ip,interface);
+        		return 1;
+    		}
+
     		pcap_loop(handle, 0, packet_handler, NULL);
 		
 		//podle Time send to syslog
@@ -579,4 +599,11 @@ void signal_handler(int signum)
 	printf("%s %d\n",tmp->string,tmp->count);
 	}
 	exit(signum); //TODO delete this
+}
+
+void alarm_handler()
+{
+
+	printf("\n\nALARM ALARM!!!!\n\n");
+	alarm(runTime);
 }
