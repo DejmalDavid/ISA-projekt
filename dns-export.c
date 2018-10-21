@@ -13,8 +13,18 @@
 #include <sys/time.h>
 #include <pcap/pcap.h>
 #include <arpa/inet.h>
+#include <signal.h>
 
 #define BUFSIZE 128
+
+typedef struct prvek
+{
+	struct prvek *pNext;
+	char * string;
+	int count;
+}Prvek;
+
+Prvek *root;
 
 /**Poznamky:
  *
@@ -35,8 +45,13 @@ void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_body);
 void packet_handler(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
 void TypeDNS(char* typ,int value1,int value0);
 void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr,char* type);
+void smaz_vse();
+bool add_prvek(char * req,char* typ,char *answer);
+void signal_handler(int signum);
 
 int main (int argc,char * argv[]) {
+
+	signal(SIGINT, signal_handler);	//TODO change to sigusr1
 
 /*	printf("argc:%d\n",argc);
 	for(int i=1;i<argc;i++)
@@ -169,13 +184,19 @@ int main (int argc,char * argv[]) {
 		dealloc(pcapFile,syslog_ip,interface);
 		return 1;
 	}
+	if(iFlag && tFlag) // musi byt zadan -r nebo -i
+	{
+		fprintf(stderr,"Prepinace r a t se vzajemne vylucuji!\n");
+		dealloc(pcapFile,syslog_ip,interface);
+		return 1;
+	}
 /***********************************END OF PARSING ARGUMENTS************************************/
 
 	if(rFlag)
 	{
     		pcap_t *handle = pcap_open_offline(pcapFile, error_buffer);    
 		struct bpf_program filter;
-    		char filter_exp[] = "port 53";
+    		char filter_exp[] = "port 53 and udp";
     		bpf_u_int32 ip;
 
   		if (pcap_compile(handle, &filter, filter_exp, 0, ip) == -1) {
@@ -191,6 +212,15 @@ int main (int argc,char * argv[]) {
 
 		pcap_loop(handle, 0, packet_handler, NULL);
 
+		if(sFlag)
+		{
+			printf("\n\n------------SENDING-------------\n\n");	//syslog send
+		}
+		else
+		{
+			printf("\n\nZpracovani dokonceno!\n");	//printf vse
+		}
+
 	}
 	if(iFlag)
 	{
@@ -204,26 +234,25 @@ int main (int argc,char * argv[]) {
      		}
      
     		pcap_loop(handle, 0, packet_handler, NULL);
-	
+		
+		//podle Time send to syslog
 	
 	}	
 
  
 
 /***********time stampg and end *************************************/
+	smaz_vse();
+
 	char cas[25];
 	getFormatTime(cas);
 	printf("\nCAS:%s",cas);
-	if(tFlag||sFlag)
-	{
-		printf("muhehe");
-	}
-
 	dealloc(pcapFile,syslog_ip,interface);
 }
 
 void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u_char *packet_body)
 {
+
 	char typ[]="UNKNOWN";
 	char response[258];  //max lenght of dns name
 	int answers;
@@ -233,6 +262,7 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 	//it is response - first bit of flags is 1
 	if(packet_body[pozice]>=0x80)
 	{
+		print_packet_info(packet_body, *packet_header);
 		answers = 256 * packet_body[pozice+4] + packet_body[pozice+5];
 		printf("Answer count:%d\n",answers);
 		pozice=54;
@@ -259,15 +289,25 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 			//printf("Type:%s\n",typ);
 			pozice=pozice+8;
 			dataLenght=256 * packet_body[pozice] + packet_body[pozice+1];
-			//printf("Data lenght:%d\n",dataLenght);
+			printf("Data lenght:%d\n",dataLenght);
 			pozice=pozice+2;
+			if(strcmp("UNKNOWN",typ)==0)
+			{	
+				printf("Type:UNKNOWN - SKIPED\n");
+				pozice=pozice+dataLenght;
+				continue;
+			}
 			get_name(packet_body,response,pozice,0,false,typ);
 			//printf("response:%s\n",response);
 			pozice=pozice+dataLenght;
 			printf("%s %s %s\n",name,typ,response);
+			if(add_prvek(name,typ,response)==false)
+			{
+				fprintf(stderr,"Problem s alokovanim pameti!");
+			}
 
 		}
-		print_packet_info(packet_body, *packet_header);
+
 	}
     	return;
 }
@@ -289,6 +329,22 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 	else
 	{
 		pointer=pozice;
+	}
+	if(strcmp("TXT",type)==0)
+	{
+		int count=packet_body[pointer];
+		printf("TXT lenght:%d\n",count);
+		pointer++;
+		text[0]='\"';
+		lenght++;
+		for(int i=pointer;i<pointer+count;i++)
+		{
+			text[lenght]=packet_body[i];	
+			lenght++;
+		}
+		text[lenght]='\"';
+		text[lenght+1]='\0';
+		return;
 	}
 	if(strcmp("A",type)==0)
 	{
@@ -330,7 +386,13 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 		inet_pton(AF_INET6,text,&text);
 		return;
 	}
-
+	if(strcmp("MX",type)==0)
+	{
+		if(ptr==false)
+		{
+			pointer=pointer+2;
+		}
+	}
 	for(unsigned int i=pointer;counter>=0;i++)
 	{		
 		if(packet_body[i]==0x00)
@@ -378,17 +440,89 @@ void TypeDNS(char* typ,int value1,int value0)
 	value = value1 *256 + value0;
 	switch(value)
 	{
-		case 1:strcpy(typ,"A");break;
-		case 28:strcpy(typ,"AAAA");break;
-		case 5:strcpy(typ,"CNAME");break;
-		case 15:strcpy(typ,"MX");break;
-		case 2:strcpy(typ,"NS");break;
-		case 6:strcpy(typ,"SOA");break;
-		case 16:strcpy(typ,"TXT");break;
-		case 99:strcpy(typ,"SPF");break;
-		case 32768:strcpy(typ,"DNSSEC");break;
+		case 1:strcpy(typ,"A");break;		//ok
+		case 28:strcpy(typ,"AAAA");break;	//format
+		case 5:strcpy(typ,"CNAME");break;	//ok
+		case 15:strcpy(typ,"MX");break;		//ok
+		case 2:strcpy(typ,"NS");break;		//TODO asi ide chce testovat
+		case 6:strcpy(typ,"SOA");break;		//Problem
+		case 16:strcpy(typ,"TXT");break;	//ok
+		case 99:strcpy(typ,"SPF");break;	//ok
+		case 32768:strcpy(typ,"DNSSEC");break;	//nenasel
+		case 12:strcpy(typ,"PTR");break;		//ok
 	}
 	//printf("Vlaue:%d\n",value);
+}
+
+
+
+bool add_prvek(char * req,char* typ,char *answer)
+{
+	Prvek *Head = root;
+	char * superstr;
+	int lenght=0;
+
+	lenght = strlen(req)+ strlen(typ) + strlen(answer) + 3;
+	superstr=(char*)malloc(sizeof(char)*lenght);
+	if(superstr==NULL)
+	{
+		return false;
+	}
+	strcpy(superstr,req);
+	strcat(superstr," ");
+	strcat(superstr,typ);
+	strcat(superstr," ");
+	strcat(superstr,answer);
+
+	if(root==NULL)	//pro prazdny seznam
+	{
+		root=(Prvek*)malloc(sizeof(Prvek));
+		if(root==NULL)
+		{
+			return false;
+		}
+		root->count=1;
+		root->string=superstr;
+		root->pNext=NULL;
+	}
+	else
+	{
+		if(strcmp(Head->string,superstr)==0)
+		{
+			Head->count++;
+			return true;
+		}
+		while(Head->pNext!=NULL)	//nenaslo v seznamu a vlozi nakonec
+		{
+
+			Head=Head->pNext;
+		}
+		Head->pNext=(Prvek*)malloc(sizeof(Prvek));
+		if(Head->pNext==NULL)
+		{
+			return false;
+		}
+		Head->pNext->count=1;
+		Head->pNext->string=superstr;
+		Head->pNext->pNext=NULL;
+	}
+	return true;
+}
+
+void smaz_vse()
+{
+	Prvek *m_pHead = root;
+	Prvek *tmp;
+	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokovávat a odesilat
+	tmp = m_pHead;
+	m_pHead =m_pHead->pNext;
+	printf("%s %d\n",tmp->string,tmp->count);
+
+//tady send tmp
+
+	free(tmp->string);
+	free(tmp);
+	}
 }
 
 
@@ -433,4 +567,16 @@ void dealloc(char* pcap,char* syslog,char* interface)
 		printf("-i\n");
 		free(interface);
 	}
+}
+
+void signal_handler(int signum)
+{
+	Prvek *m_pHead = root;
+	Prvek *tmp;
+	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokovávat a odesilat
+	tmp = m_pHead;
+	m_pHead =m_pHead->pNext;
+	printf("%s %d\n",tmp->string,tmp->count);
+	}
+	exit(signum); //TODO delete this
 }
