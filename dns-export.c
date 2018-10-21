@@ -34,7 +34,7 @@ void getFormatTime(char* timestamp);
 void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_body);
 void packet_handler(u_char *args,const struct pcap_pkthdr *header,const u_char *packet);
 void TypeDNS(char* typ,int value1,int value0);
-void get_name(const u_char *packet_body,char * text,int pozice);
+void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr);
 
 int main (int argc,char * argv[]) {
 
@@ -224,19 +224,15 @@ int main (int argc,char * argv[]) {
 
 void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u_char *packet_body)
 {
-	//printf("Flags:%02x\n",packet_body[44]);
 	char typ[]="UNKNOWN";
-	char dotaz[258];  //max lenght of dns name
-	int lenght=0;
+	char response[258];  //max lenght of dns name
 	int answers;
-	int counter=0;
 	int pozice=44;
-	int pointer=42;
 	char name[258];
+	int dataLenght;
 	//it is response - first bit of flags is 1
 	if(packet_body[pozice]>=0x80)
 	{
-		//printf("Type:%02x %02x\n",packet_body[83],packet_body[84]);
 		answers = 256 * packet_body[pozice+4] + packet_body[pozice+5];
 		printf("Answer count:%d\n",answers);
 		pozice=54;
@@ -248,22 +244,30 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 				break;
 			}		
 		}
-		printf("Pozice:%d hodnota:%02x\n",pozice,packet_body[pozice+1]);
-		TypeDNS(typ,packet_body[pozice],packet_body[pozice+1]);
-		printf("Type:%s\n",typ);
-		if(strcmp(typ,"UNKNOWN")==0)
+		//printf("Pozice:%d hodnota:%02x\n",pozice,packet_body[pozice+1]);
+		pozice=pozice+4;
+
+		for(int i=1;i<=answers;i++)
 		{
-			return;
-		}
-		if(answers==1)
-		{
-			pozice=pozice+4;
-			pointer=((packet_body[pozice]-0xc0)*256+packet_body[pozice+1])+pointer;
-			printf("Pointer:%02x %02x = %d\n",packet_body[pozice],packet_body[pozice+1],pointer);	
-			//printf("Pointer cil:%02x\n",packet_body[pointer]);
-			get_name(packet_body,name,pointer);
-			//pozice=pozice+2;
-			printf("Name:%s",name);
+	
+			get_name(packet_body,name,pozice,0,true);
+			printf("Name:%s\n",name);
+			pozice=pozice+2;
+
+			TypeDNS(typ,packet_body[pozice],packet_body[pozice+1]);
+			printf("Type:%s\n",typ);
+			/**if(strcmp(typ,"UNKNOWN")==0)
+			{
+				return;
+			}
+			*/
+			pozice=pozice+8;
+			dataLenght=256 * packet_body[pozice] + packet_body[pozice+1];
+			//printf("Data lenght:%d\n",dataLenght);
+			pozice=pozice+2;
+			get_name(packet_body,response,pozice,0,false);
+			printf("response:%s\n",response);
+			pozice=pozice+dataLenght;
 
 		}
 		print_packet_info(packet_body, *packet_header);
@@ -271,14 +275,30 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
     	return;
 }
 
-void get_name(const u_char *packet_body,char * text,int pozice)
+void get_name(const u_char *packet_body,char * text,int pozice,int index,bool ptr)
 {
-int counter=0;
-int lenght=0;
-for(unsigned int i=pozice;counter>=0;i++)
+	memset(text, 0, 255);
+	int counter=0;
+	int lenght=index;
+	int pointer;
+	if(ptr)
+	{
+		pointer=((packet_body[pozice]-0xc0)*256+packet_body[pozice+1])+42;
+		printf("Pointer:%02x %02x = %d\n",packet_body[pozice],packet_body[pozice+1],pointer);
+	}
+	else
+	{
+		pointer=pozice;
+	}
+	for(unsigned int i=pointer;counter>=0;i++)
 	{		
 		if(packet_body[i]==0x00)
 		{
+			break;
+		}
+		if(packet_body[i]>=0xc0)
+		{
+			printf("PTR");
 			break;
 		}
 		if(counter==0)
@@ -305,7 +325,7 @@ for(unsigned int i=pozice;counter>=0;i++)
 
 
 void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header) {
-    	printf("Packet total length %d\n\n", packet_header.len);
+    	printf("Packet total length %d\n---------------------------------------------------\n", packet_header.len);
 }
 
 
@@ -325,7 +345,7 @@ void TypeDNS(char* typ,int value1,int value0)
 		case 99:strcpy(typ,"SPF");break;
 		case 32768:strcpy(typ,"DNSSEC");break;
 	}
-	printf("Vlaue:%d\n",value);
+	//printf("Vlaue:%d\n",value);
 }
 
 
