@@ -187,7 +187,7 @@ int main (int argc,char * argv[]) {
 		dealloc(pcapFile,syslog_ip,interface);
 		return 1;
 	}
-	if(rFlag && tFlag) // musi byt zadan -r nebo -i
+	if(rFlag && tFlag) // musi byt zadan -r nebo -t
 	{
 		fprintf(stderr,"Prepinace r a t se vzajemne vylucuji!\n");
 		dealloc(pcapFile,syslog_ip,interface);
