@@ -3,8 +3,12 @@
  * Zdroje muj projekt do IPK a konstra TCP dokumentace ze stranek predmentu
  * vypracoval David Dejmal xdejma00
  * 2018
+ *
+ *
+ * [0] pouzity kod z https://gist.github.com/listnukira/4045436
+ *
  */
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,6 +19,10 @@
 #include <arpa/inet.h>
 #include <signal.h>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netdb.h>
+#include <netinet/in.h>
 
 #define BUFSIZE 128
 
@@ -27,6 +35,7 @@ typedef struct prvek
 
 Prvek *root;
 int runTime;
+char* syslog_ip = NULL;
 /**Poznamky:
  *
  * every end of main must end like this:
@@ -50,6 +59,8 @@ void smaz_vse();
 bool add_prvek(char * req,char* typ,char *answer);
 void signal_handler(int signum);
 void alarm_handler();
+bool sent_syslog();
+void tisk_vse();
 
 int main (int argc,char * argv[]) {
 
@@ -62,7 +73,7 @@ int main (int argc,char * argv[]) {
 		printf("argv[%d]:%s\n",i,argv[i]);
 	}
 
-	
+
 */
 
     char error_buffer[PCAP_ERRBUF_SIZE]; /* Size defined in pcap.h */
@@ -76,7 +87,7 @@ int main (int argc,char * argv[]) {
 	runTime=60;
 	char*  interface = NULL;
 	char* pcapFile = NULL;
-	char* syslog_ip = NULL;
+
 
 	bool rFlag=false;
 	bool iFlag=false;
@@ -92,7 +103,7 @@ int main (int argc,char * argv[]) {
 		return 1;
 	}
 
- 	for(int i=1;i<argc;i++)	
+ 	for(int i=1;i<argc;i++)
 	{
 		//zkontroluje prepinace
 		if(strcmp(argv[i],"-r")==0)
@@ -111,13 +122,13 @@ int main (int argc,char * argv[]) {
 		{
 			sFlag=true;
 			lastOpt='s';
-			continue;			
+			continue;
 		}
 		if(strcmp(argv[i],"-t")==0)
 		{
 			tFlag=true;
 			lastOpt='t';
-			continue;			
+			continue;
 		}
 
 		/*
@@ -194,15 +205,21 @@ int main (int argc,char * argv[]) {
 		return 1;
 	}
 /***********************************END OF PARSING ARGUMENTS************************************/
-	
-	alarm(runTime);
+
+
 
 	if(rFlag)
 	{
-    		pcap_t *handle = pcap_open_offline(pcapFile, error_buffer);    
+    		pcap_t *handle = pcap_open_offline(pcapFile, error_buffer);
+    		if(handle == NULL)
+				{
+					fprintf(stderr,"Soubor nelze otevrit!");
+								dealloc(pcapFile,syslog_ip,interface);
+        		return 1;
+				}
 		struct bpf_program filter;
     		char filter_exp[] = "port 53 and udp";
-    		bpf_u_int32 ip;
+    		bpf_u_int32 ip = 0;
 
   		if (pcap_compile(handle, &filter, filter_exp, 0, ip) == -1) {
         		fprintf(stderr,"Spatny filtr: %s\n", pcap_geterr(handle));
@@ -220,24 +237,36 @@ int main (int argc,char * argv[]) {
 		if(sFlag)
 		{
 			printf("\n\n------------SENDING-------------\n\n");	//syslog send
+			if(sent_syslog(syslog_ip)==0)
+			{
+				fprintf(stderr,"Chyba pri odesilani na syslog server!");
+				dealloc(pcapFile,syslog_ip,interface);
+				smaz_vse();
+				return 1;
+			}
 		}
 		else
 		{
 			printf("\n\nZpracovani dokonceno!\n");	//printf vse
+			tisk_vse();
+			smaz_vse();
+			dealloc(pcapFile,syslog_ip,interface);
 		}
 
 	}
 	if(iFlag)
 	{
+		alarm(runTime);
  		pcap_t *handle;
      		struct bpf_program filter;
     		char filter_exp[] = "port 53 and udp";
-    		bpf_u_int32 ip;
+    		bpf_u_int32 ip=0;
 
     		/* Open device for live capture */
     		handle = pcap_open_live(interface,BUFSIZ,0,runTime,error_buffer);
     		if (handle == NULL) {
          		fprintf(stderr, "Could not open interface %s: %s\n", interface, error_buffer);
+         			dealloc(pcapFile,syslog_ip,interface);
          	return 2;
      		}
 
@@ -254,25 +283,119 @@ int main (int argc,char * argv[]) {
     		}
 
     		pcap_loop(handle, 0, packet_handler, NULL);
-		
-		//podle Time send to syslog
-	
-	}	
 
- 
+	}
+
+
 
 /***********time stampg and end *************************************/
 	smaz_vse();
-
-	char cas[25];
-	getFormatTime(cas);
-	printf("\nCAS:%s",cas);
 	dealloc(pcapFile,syslog_ip,interface);
 }
 
+void tisk_vse()
+{
+		Prvek *m_pHead = root;
+		while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odesilat
+		printf("%s %d\n",m_pHead ->string,m_pHead ->count);
+		m_pHead =m_pHead->pNext; //posun na dalsi prvek
+		}
+}
+
+bool sent_syslog()
+{
+	  int client_socket, port_number, bytestx;
+    socklen_t serverlen;
+    const char *server_hostname;
+    struct hostent *server;
+    struct sockaddr_in server_address;
+    char buf[1024];	//max length of message
+		char cas[26];
+
+
+    server_hostname = syslog_ip;
+    port_number = 514;	//TODO
+
+    /* 2. ziskani adresy serveru pomoci DNS */
+    if ((server = gethostbyname(server_hostname)) == NULL) {
+        fprintf(stderr,"ERROR: no such host as %s\n", server_hostname);
+        return false;
+    }
+    /* 3. nalezeni IP adresy serveru a inicializace struktury server_address */
+    bzero((char *) &server_address, sizeof(server_address));
+    server_address.sin_family = AF_INET;
+    bcopy((char *)server->h_addr, (char *)&server_address.sin_addr.s_addr, server->h_length);
+    server_address.sin_port = htons(port_number);
+
+    /* tiskne informace o vzdalenem soketu */
+    //printf("INFO: Server socket: %s : %d \n", inet_ntoa(server_address.sin_addr), ntohs(server_address.sin_port));
+
+    /* Vytvoreni soketu */
+	if ((client_socket = socket(AF_INET, SOCK_DGRAM, 0)) <= 0)
+	{
+		fprintf(stderr,"ERROR: socket");
+		return false;
+	}
+
+		Prvek *m_pHead = root;
+		while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odesilat
+			bzero(buf, 1024);
+			getFormatTime(cas);
+			strcpy(buf,"<134>1 ");
+			strcat(buf,cas);
+			strcat(buf," ");
+
+			//get own ip - zdroj [0]
+			char myIP[16];
+			struct sockaddr_in  my_addr;
+			unsigned int myPort;
+			bzero(&my_addr, sizeof(my_addr));
+			unsigned int len = sizeof(my_addr);
+			getsockname(client_socket, (struct sockaddr *) &my_addr, &len);
+			inet_ntop(AF_INET, &my_addr.sin_addr, myIP, sizeof(myIP));
+			myPort = ntohs(my_addr.sin_port);
+			// end of [0]
+
+			strcat(buf,myIP);
+
+
+			strcat(buf," dns-export - - - ");
+
+			//printf("%s %d\n",tmp->string,tmp->count);
+			if(strlen(m_pHead->string)>1020)
+			{
+				fprintf(stderr,"Moc dlouha zprava");
+				return false;
+			}
+			strcat(buf,m_pHead->string);
+			strcat(buf," ");
+
+
+			char str[12];
+			sprintf(str, "%d", m_pHead->count);
+
+			strcat(buf,str);
+
+			printf("Zprava:%s\n",buf);
+
+			/* odeslani zpravy na server */
+			serverlen = sizeof(server_address);
+			bytestx = sendto(client_socket, buf, strlen(buf), 0, (struct sockaddr *) &server_address, serverlen);
+			if (bytestx < 0)
+			{
+				fprintf(stderr,"ERROR: sendto");
+			}
+
+			m_pHead =m_pHead->pNext; //posun na dalsi prvek
+		}
+    return true;
+
+}
+
+
 void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u_char *packet_body)
 {
-
+	args;
 	char typ[]="UNKNOWN";
 	char response[258];  //max lenght of dns name
 	int answers;
@@ -287,12 +410,12 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 		printf("Answer count:%d\n",answers);
 		pozice=54;
 		for(int i=pozice;;i++)
-		{	
-			pozice++;	
+		{
+			pozice++;
 			if(packet_body[i]==0x00)
 			{
 				break;
-			}		
+			}
 		}
 		//printf("Pozice:%d hodnota:%02x\n",pozice,packet_body[pozice+1]);
 		pozice=pozice+4;
@@ -303,8 +426,14 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 			printf("Answer no:%d\n",i);
 			get_name(packet_body,name,pozice,0,true,typ);
 			//printf("Name:%s\n",name);
-			pozice=pozice+2;
-
+			if(strcmp(name,"<Root>")==0)
+			{
+				pozice++;
+			}
+			else
+			{
+				pozice=pozice+2;
+			}
 			TypeDNS(typ,packet_body[pozice],packet_body[pozice+1]);
 			//printf("Type:%s\n",typ);
 			pozice=pozice+8;
@@ -312,7 +441,7 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 			printf("Data lenght:%d\n",dataLenght);
 			pozice=pozice+2;
 			if(strcmp("UNKNOWN",typ)==0)
-			{	
+			{
 				printf("Type:UNKNOWN - SKIPED\n");
 				pozice=pozice+dataLenght;
 				continue;
@@ -341,6 +470,35 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 	{
 		memset(text, 0, 258);
 	}
+	if(strcmp("RRSIG",type)==0)
+	{
+		strcpy(text,"");
+		return;
+	}
+		if(strcmp("DNSKEY",type)==0)
+	{
+		strcpy(text,"");
+		return;
+	}
+		if(strcmp("DS",type)==0)
+	{
+		strcpy(text,"");
+		return;
+	}
+		if(strcmp("NSEC",type)==0)
+	{
+		strcpy(text,"");
+		return;
+	}
+	if(packet_body[pozice]==0x0)
+	{
+		if(strcmp("MX",type)!=0)
+		{
+			//printf("hodnota:%d\n",packet_body[pozice]);
+			strcpy(text,"<Root>");
+			return;
+		}
+	}
 	if(ptr)
 	{
 		pointer=((packet_body[pozice]-0xc0)*256+packet_body[pozice+1])+42;
@@ -350,6 +508,7 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 	{
 		pointer=pozice;
 	}
+
 	if(strcmp("TXT",type)==0)
 	{
 		int count=packet_body[pointer];
@@ -359,7 +518,7 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 		lenght++;
 		for(int i=pointer;i<pointer+count;i++)
 		{
-			text[lenght]=packet_body[i];	
+			text[lenght]=packet_body[i];
 			lenght++;
 		}
 		text[lenght]='\"';
@@ -414,7 +573,7 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 		}
 	}
 	for(unsigned int i=pointer;counter>=0;i++)
-	{		
+	{
 		if(packet_body[i]==0x00)
 		{
 			break;
@@ -439,9 +598,9 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 			}
 		}
 		else
-		{	
+		{
 			text[lenght]=packet_body[i];
-		
+
 		}
 		counter--;
 		lenght++;
@@ -464,16 +623,18 @@ void TypeDNS(char* typ,int value1,int value0)
 		case 28:strcpy(typ,"AAAA");break;	//format
 		case 5:strcpy(typ,"CNAME");break;	//ok
 		case 15:strcpy(typ,"MX");break;		//ok
-		case 2:strcpy(typ,"NS");break;		//TODO asi ide chce testovat
-		case 6:strcpy(typ,"SOA");break;		//Problem
+		case 2:strcpy(typ,"NS");break;		//ok
+		case 6:strcpy(typ,"SOA");break;		//ok
 		case 16:strcpy(typ,"TXT");break;	//ok
 		case 99:strcpy(typ,"SPF");break;	//ok
-		case 32768:strcpy(typ,"DNSSEC");break;	//nenasel
-		case 12:strcpy(typ,"PTR");break;		//ok
+
+		case 46:strcpy(typ,"RRSIG");break;	//ok kratke
+		case 48:strcpy(typ,"DNSKEY");break;	//
+		case 43:strcpy(typ,"DS");break;	//ok kratke
+		case 47:strcpy(typ,"NSEC");break;	//ok
 	}
 	//printf("Vlaue:%d\n",value);
 }
-
 
 
 bool add_prvek(char * req,char* typ,char *answer)
@@ -507,15 +668,20 @@ bool add_prvek(char * req,char* typ,char *answer)
 	}
 	else
 	{
-		if(strcmp(Head->string,superstr)==0)
-		{
-			Head->count++;
-			return true;
-		}
+		//printf("A:%s\nB:%s\n",Head->string,superstr);
+		if(strcmp(root->string,superstr)==0)
+			{
+				root->count++;
+				return true;
+			}
 		while(Head->pNext!=NULL)	//nenaslo v seznamu a vlozi nakonec
 		{
-
 			Head=Head->pNext;
+			if(strcmp(Head->string,superstr)==0)
+			{
+				Head->count++;
+				return true;
+			}
 		}
 		Head->pNext=(Prvek*)malloc(sizeof(Prvek));
 		if(Head->pNext==NULL)
@@ -533,10 +699,10 @@ void smaz_vse()
 {
 	Prvek *m_pHead = root;
 	Prvek *tmp;
-	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokovávat a odesilat
+	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokov\E1vat a odesilat
 	tmp = m_pHead;
 	m_pHead =m_pHead->pNext;
-	printf("%s %d\n",tmp->string,tmp->count);
+	//printf("%s %d\n",tmp->string,tmp->count);
 
 //tady send tmp
 
@@ -591,19 +757,11 @@ void dealloc(char* pcap,char* syslog,char* interface)
 
 void signal_handler(int signum)
 {
-	Prvek *m_pHead = root;
-	Prvek *tmp;
-	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokovávat a odesilat
-	tmp = m_pHead;
-	m_pHead =m_pHead->pNext;
-	printf("%s %d\n",tmp->string,tmp->count);
-	}
-	exit(signum); //TODO delete this
+	tisk_vse();
 }
 
 void alarm_handler()
 {
-
-	printf("\n\nALARM ALARM!!!!\n\n");
+	sent_syslog();
 	alarm(runTime);
 }

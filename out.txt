@@ -1,0 +1,1968 @@
+Packet total length 208
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:18
+news.bbc.co.uk CNAME newswww.bbc.net.uk
+Answer no:2
+Data lenght:4
+newswww.bbc.net.uk A 212.58.244.56
+Answer no:3
+Data lenght:4
+newswww.bbc.net.uk A 212.58.246.80
+Packet total length 157
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:18
+news.bbc.co.uk CNAME newswww.bbc.net.uk
+Packet total length 138
+---------------------------------------------------
+Answer count:0
+Packet total length 203
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:14
+www.bbc.co.uk CNAME www.bbc.net.uk
+Answer no:2
+Data lenght:4
+www.bbc.net.uk A 212.58.246.95
+Answer no:3
+Data lenght:4
+www.bbc.net.uk A 212.58.244.71
+Packet total length 152
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:14
+www.bbc.co.uk CNAME www.bbc.net.uk
+Packet total length 134
+---------------------------------------------------
+Answer count:0
+Packet total length 185
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:4
+www.bbc.net.uk A 212.58.244.71
+Answer no:2
+Data lenght:4
+www.bbc.net.uk A 212.58.246.95
+Packet total length 505
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:22
+static.bbci.co.uk CNAME static-bbci.bbc.net.uk
+Answer no:2
+Data lenght:31
+static-bbci.bbc.net.uk CNAME static.bbci.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+static.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:4
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 248
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:22
+static.bbci.co.uk CNAME static-bbci.bbc.net.uk
+Answer no:2
+Data lenght:31
+static-bbci.bbc.net.uk CNAME static.bbci.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+static.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 220
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:34
+nav.files.bbci.co.uk CNAME nav.files.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+nav.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 400
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 143
+---------------------------------------------------
+Answer count:0
+Packet total length 241
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:17
+static.bbc.co.uk CNAME static.bbc.net.uk
+Answer no:2
+Data lenght:30
+static.bbc.net.uk CNAME static.bbc.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+static.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 498
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:17
+static.bbc.co.uk CNAME static.bbc.net.uk
+Answer no:2
+Data lenght:30
+static.bbc.net.uk CNAME static.bbc.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+static.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:4
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 481
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:36
+mybbc.files.bbci.co.uk CNAME mybbc.files.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+mybbc.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 224
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:36
+mybbc.files.bbci.co.uk CNAME mybbc.files.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+mybbc.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 502
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:21
+ichef.bbci.co.uk CNAME ichef-bbci.bbc.net.uk
+Answer no:2
+Data lenght:30
+ichef-bbci.bbc.net.uk CNAME ichef.bbci.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+ichef.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:4
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 245
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:21
+ichef.bbci.co.uk CNAME ichef-bbci.bbc.net.uk
+Answer no:2
+Data lenght:30
+ichef-bbci.bbc.net.uk CNAME ichef.bbci.co.uk.edgekey.net
+Answer no:3
+Data lenght:21
+ichef.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 524
+---------------------------------------------------
+Answer count:5
+Answer no:1
+Data lenght:8
+ichef-1.bbci.co.uk CNAME ichef.bbci.co.uk
+Answer no:2
+Data lenght:21
+ichef.bbci.co.uk CNAME ichef-bbci.bbc.net.uk
+Answer no:3
+Data lenght:30
+ichef-bbci.bbc.net.uk CNAME ichef.bbci.co.uk.edgekey.net
+Answer no:4
+Data lenght:21
+ichef.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:5
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 152
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:14
+fig.bbc.co.uk CNAME fig.bbc.net.uk
+Packet total length 134
+---------------------------------------------------
+Answer count:0
+Packet total length 203
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:14
+fig.bbc.co.uk CNAME fig.bbc.net.uk
+Answer no:2
+Data lenght:4
+fig.bbc.net.uk A 212.58.244.115
+Answer no:3
+Data lenght:4
+fig.bbc.net.uk A 212.58.246.213
+Packet total length 185
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:4
+fig.bbc.net.uk A 212.58.244.115
+Answer no:2
+Data lenght:4
+fig.bbc.net.uk A 212.58.246.213
+Packet total length 332
+---------------------------------------------------
+Answer count:6
+Answer no:1
+Data lenght:20
+ocsp2.globalsign.com CNAME cdn.globalsigncdn.com
+Answer no:2
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.25.216
+Answer no:3
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.26.216
+Answer no:4
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.27.216
+Answer no:5
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.28.216
+Answer no:6
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.24.216
+Packet total length 392
+---------------------------------------------------
+Answer count:6
+Answer no:1
+Data lenght:20
+ocsp2.globalsign.com CNAME cdn.globalsigncdn.com
+Answer no:2
+Data lenght:16
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1bd8
+Answer no:3
+Data lenght:16
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1cd8
+Answer no:4
+Data lenght:16
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:18d8
+Answer no:5
+Data lenght:16
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:19d8
+Answer no:6
+Data lenght:16
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1ad8
+Packet total length 301
+---------------------------------------------------
+Answer count:5
+Answer no:1
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.26.216
+Answer no:2
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.27.216
+Answer no:3
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.28.216
+Answer no:4
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.24.216
+Answer no:5
+Data lenght:4
+cdn.globalsigncdn.com A 104.16.25.216
+Packet total length 218
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:24
+www.bbc.com CNAME www-bbc-com.bbc.net.uk
+Answer no:2
+Data lenght:4
+www-bbc-com.bbc.net.uk A 212.58.244.26
+Answer no:3
+Data lenght:4
+www-bbc-com.bbc.net.uk A 212.58.246.54
+Packet total length 167
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:24
+www.bbc.com CNAME www-bbc-com.bbc.net.uk
+Packet total length 152
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:14
+ssl.bbc.co.uk CNAME ssl.bbc.net.uk
+Packet total length 203
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:14
+ssl.bbc.co.uk CNAME ssl.bbc.net.uk
+Answer no:2
+Data lenght:4
+ssl.bbc.net.uk A 212.58.246.213
+Answer no:3
+Data lenght:4
+ssl.bbc.net.uk A 212.58.244.115
+Packet total length 247
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:20
+sa.bbc.co.uk CNAME bbc01.sitestat.com
+Answer no:2
+Data lenght:4
+bbc01.sitestat.com A 77.72.116.213
+Answer no:3
+Data lenght:4
+bbc01.sitestat.com A 77.72.118.213
+Packet total length 104
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:20
+sa.bbc.co.uk CNAME bbc01.sitestat.com
+Packet total length 142
+---------------------------------------------------
+Answer count:0
+Packet total length 134
+---------------------------------------------------
+Answer count:0
+Packet total length 78
+---------------------------------------------------
+Answer count:0
+Packet total length 379
+---------------------------------------------------
+Answer count:5
+Answer no:1
+Data lenght:23
+cdn.krxd.net CNAME cdn-traffic-director.krxd.net
+Answer no:2
+Data lenght:13
+cdn-traffic-director.krxd.net CNAME cdn-fastly.krxd.net
+Answer no:3
+Data lenght:42
+cdn-fastly.krxd.net CNAME cdn-fastly.krxd.net.c.global-ssl.fastly.net
+Answer no:4
+Data lenght:29
+cdn-fastly.krxd.net.c.global-ssl.fastly.net CNAME prod.c.ssl.global.fastlylb.net
+Answer no:5
+Data lenght:4
+prod.c.ssl.global.fastlylb.net A 151.101.12.175
+Packet total length 298
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:23
+cdn.krxd.net CNAME cdn-traffic-director.krxd.net
+Answer no:2
+Data lenght:13
+cdn-traffic-director.krxd.net CNAME cdn-fastly.krxd.net
+Answer no:3
+Data lenght:42
+cdn-fastly.krxd.net CNAME cdn-fastly.krxd.net.c.global-ssl.fastly.net
+Answer no:4
+Data lenght:29
+cdn-fastly.krxd.net.c.global-ssl.fastly.net CNAME prod.c.ssl.global.fastlylb.net
+Packet total length 288
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+pagead2.googlesyndication.com CNAME pagead46.l.doubleclick.net
+Answer no:2
+Data lenght:4
+pagead46.l.doubleclick.net A 216.58.209.194
+Packet total length 300
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+pagead2.googlesyndication.com CNAME pagead46.l.doubleclick.net
+Answer no:2
+Data lenght:16
+pagead46.l.doubleclick.net AAAA 2a00:1450:400d:0802:0000:0000:0000:2002
+Packet total length 161
+---------------------------------------------------
+Answer count:0
+Packet total length 260
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:16
+pagead46.l.doubleclick.net AAAA 2a00:1450:400d:0802:0000:0000:0000:2002
+Packet total length 284
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+www.googletagservices.com CNAME pagead46.l.doubleclick.net
+Answer no:2
+Data lenght:4
+pagead46.l.doubleclick.net A 216.58.209.194
+Packet total length 296
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+www.googletagservices.com CNAME pagead46.l.doubleclick.net
+Answer no:2
+Data lenght:16
+pagead46.l.doubleclick.net AAAA 2a00:1450:400d:0802:0000:0000:0000:2002
+Packet total length 483
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:37
+search.files.bbci.co.uk CNAME search.files.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+search.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 226
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:37
+search.files.bbci.co.uk CNAME search.files.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+search.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 448
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:4
+a1294.w20.akamai.net A 2.21.74.65
+Answer no:2
+Data lenght:4
+a1294.w20.akamai.net A 2.21.74.57
+Packet total length 471
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:31
+polling.bbc.co.uk CNAME polling.bbc.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+polling.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 212
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:30
+feeds.bbci.co.uk CNAME feeds.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+feeds.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 469
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:30
+feeds.bbci.co.uk CNAME feeds.bbci.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+feeds.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 214
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:31
+polling.bbc.co.uk CNAME polling.bbc.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+polling.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 333
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:23
+static.chartbeat.com CNAME global.ssl.fastly.net
+Answer no:2
+Data lenght:13
+global.ssl.fastly.net CNAME global-ssl.fastly.net
+Answer no:3
+Data lenght:29
+global-ssl.fastly.net CNAME prod.a.ssl.global.fastlylb.net
+Answer no:4
+Data lenght:4
+prod.a.ssl.global.fastlylb.net A 151.101.12.249
+Packet total length 249
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:23
+static.chartbeat.com CNAME global.ssl.fastly.net
+Answer no:2
+Data lenght:13
+global.ssl.fastly.net CNAME global-ssl.fastly.net
+Answer no:3
+Data lenght:29
+global-ssl.fastly.net CNAME prod.a.ssl.global.fastlylb.net
+Packet total length 478
+---------------------------------------------------
+Answer count:10
+Answer no:1
+Data lenght:18
+beacon.krxd.net CNAME beacon-a-dub.lb.krxd.net
+Answer no:2
+Data lenght:51
+beacon-a-dub.lb.krxd.net CNAME beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com
+Answer no:3
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.176.178
+Answer no:4
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.191.93
+Answer no:5
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.217.205.184
+Answer no:6
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.192.30
+Answer no:7
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.201.86
+Answer no:8
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.211.70
+Answer no:9
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.51.180.69
+Answer no:10
+Data lenght:4
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.88.70
+Packet total length 250
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:18
+beacon.krxd.net CNAME beacon-a-dub.lb.krxd.net
+Answer no:2
+Data lenght:51
+beacon-a-dub.lb.krxd.net CNAME beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com
+Packet total length 327
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:16
+loadm.exelator.com CNAME loadus.tm.ssl.exelator.com
+Answer no:2
+Data lenght:15
+loadus.tm.ssl.exelator.com CNAME eu-west.load.exelator.com
+Answer no:3
+Data lenght:13
+eu-west.load.exelator.com CNAME load.amexp.exelator.com
+Answer no:4
+Data lenght:4
+load.amexp.exelator.com A 216.52.1.12
+Packet total length 223
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:16
+loadm.exelator.com CNAME loadus.tm.ssl.exelator.com
+Answer no:2
+Data lenght:15
+loadus.tm.ssl.exelator.com CNAME eu-west.load.exelator.com
+Answer no:3
+Data lenght:13
+eu-west.load.exelator.com CNAME load.amexp.exelator.com
+Packet total length 470
+---------------------------------------------------
+Answer count:9
+Answer no:1
+Data lenght:54
+usermatch.krxd.net CNAME usermatch-ash-1350078884.us-east-1.elb.amazonaws.com
+Answer no:2
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 107.22.241.77
+Answer no:3
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 23.21.212.240
+Answer no:4
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 23.23.219.8
+Answer no:5
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 50.17.232.169
+Answer no:6
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 50.19.107.76
+Answer no:7
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.197.254.190
+Answer no:8
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.225.133.124
+Answer no:9
+Data lenght:4
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.225.210.192
+Packet total length 226
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:54
+usermatch.krxd.net CNAME usermatch-ash-1350078884.us-east-1.elb.amazonaws.com
+Packet total length 317
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:13
+idsync.rlcdn.com CNAME idsync-ext.rlcdn.com
+Answer no:2
+Data lenght:4
+idsync-ext.rlcdn.com A 54.152.203.23
+Packet total length 178
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:13
+idsync.rlcdn.com CNAME idsync-ext.rlcdn.com
+Packet total length 157
+---------------------------------------------------
+Answer count:0
+Packet total length 161
+---------------------------------------------------
+Answer count:0
+Packet total length 191
+---------------------------------------------------
+Answer count:0
+Packet total length 433
+---------------------------------------------------
+Answer count:9
+Answer no:1
+Data lenght:57
+i.w55c.net CNAME dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com
+Answer no:2
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.29.155.24
+Answer no:3
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.59.116.250
+Answer no:4
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 54.93.130.65
+Answer no:5
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 54.93.194.19
+Answer no:6
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.78.40
+Answer no:7
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.121.238
+Answer no:8
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.171.120
+Answer no:9
+Data lenght:4
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.29.132.94
+Packet total length 510
+---------------------------------------------------
+Answer count:6
+Answer no:1
+Data lenght:33
+c.go-mpulse.net CNAME c.go-mpulse.net.cdn.cloudflare.net
+Answer no:2
+Data lenght:4
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.25.190
+Answer no:3
+Data lenght:4
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.26.190
+Answer no:4
+Data lenght:4
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.27.190
+Answer no:5
+Data lenght:4
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.23.190
+Answer no:6
+Data lenght:4
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.24.190
+Packet total length 178
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:33
+c.go-mpulse.net CNAME c.go-mpulse.net.cdn.cloudflare.net
+Packet total length 226
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+star-mini.c10r.facebook.com A 31.13.84.36
+Packet total length 238
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:16
+star-mini.c10r.facebook.com AAAA 2a03:2880:f107:0083:face:b00c:0000:25de
+Packet total length 223
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:57
+i.w55c.net CNAME dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com
+Packet total length 209
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+edigitalsurvey.com A 46.236.9.36
+Packet total length 131
+---------------------------------------------------
+Answer count:0
+Packet total length 201
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:15
+me-cdn.effectivemeasure.net CNAME traffic.em.io
+Packet total length 160
+---------------------------------------------------
+Answer count:0
+Packet total length 282
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:15
+me-cdn.effectivemeasure.net CNAME traffic.em.io
+Answer no:2
+Data lenght:4
+traffic.em.io A 52.17.222.178
+Packet total length 244
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+traffic.em.io A 52.17.222.178
+Packet total length 86
+---------------------------------------------------
+Answer count:0
+Packet total length 176
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+secure-us.imrworldwide.com A 138.108.96.100
+Packet total length 131
+---------------------------------------------------
+Answer count:0
+Packet total length 233
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+shop.bbc.com A 207.159.133.98
+Packet total length 158
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:17
+search.bbc.co.uk CNAME search.bbc.net.uk
+Packet total length 148
+---------------------------------------------------
+Answer count:0
+Packet total length 137
+---------------------------------------------------
+Answer count:0
+Packet total length 194
+---------------------------------------------------
+Answer count:0
+Packet total length 209
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:17
+search.bbc.co.uk CNAME search.bbc.net.uk
+Answer no:2
+Data lenght:4
+search.bbc.net.uk A 212.58.246.161
+Answer no:3
+Data lenght:4
+search.bbc.net.uk A 212.58.244.158
+Packet total length 188
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:4
+search.bbc.net.uk A 212.58.246.161
+Answer no:2
+Data lenght:4
+search.bbc.net.uk A 212.58.244.158
+Packet total length 424
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:43
+ssc.api.bbc.com CNAME ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk
+Answer no:2
+Data lenght:70
+ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk CNAME live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com
+Answer no:3
+Data lenght:4
+live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com A 52.210.59.77
+Answer no:4
+Data lenght:4
+live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com A 52.16.236.252
+Packet total length 294
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:43
+ssc.api.bbc.com CNAME ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk
+Answer no:2
+Data lenght:70
+ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk CNAME live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com
+Packet total length 199
+---------------------------------------------------
+Answer count:0
+Packet total length 225
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:9
+m.bbc.co.uk CNAME m.live.bbc.co.uk
+Answer no:2
+Data lenght:17
+m.live.bbc.co.uk CNAME m-live.bbc.net.uk
+Answer no:3
+Data lenght:4
+m-live.bbc.net.uk A 212.58.246.174
+Answer no:4
+Data lenght:4
+m-live.bbc.net.uk A 212.58.244.163
+Packet total length 152
+---------------------------------------------------
+Answer count:0
+Packet total length 517
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:29
+ocsp.godaddy.com CNAME ocsp.godaddy.com.akadns.net
+Answer no:2
+Data lenght:4
+ocsp.godaddy.com.akadns.net A 50.63.243.230
+Packet total length 180
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:29
+ocsp.godaddy.com CNAME ocsp.godaddy.com.akadns.net
+Packet total length 213
+---------------------------------------------------
+Answer count:0
+Packet total length 271
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+pages.email.bbc.com CNAME pages.virt.s6.exacttarget.com
+Answer no:2
+Data lenght:4
+pages.virt.s6.exacttarget.com A 68.232.203.80
+Packet total length 137
+---------------------------------------------------
+Answer count:0
+Packet total length 234
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:42
+advertising.bbcworldwide.com CNAME advertising.bbcworldwide.com.edgekey.net
+Answer no:2
+Data lenght:22
+advertising.bbcworldwide.com.edgekey.net CNAME e10296.g.akamaiedge.net
+Packet total length 144
+---------------------------------------------------
+Answer count:0
+Packet total length 494
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:42
+advertising.bbcworldwide.com CNAME advertising.bbcworldwide.com.edgekey.net
+Answer no:2
+Data lenght:22
+advertising.bbcworldwide.com.edgekey.net CNAME e10296.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e10296.g.akamaiedge.net A 104.123.201.155
+Packet total length 143
+---------------------------------------------------
+Answer count:0
+Packet total length 401
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e10296.g.akamaiedge.net A 104.123.201.155
+Packet total length 170
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:28
+pages.email.bbc.com CNAME pages.virt.s6.exacttarget.com
+Packet total length 153
+---------------------------------------------------
+Answer count:0
+Packet total length 303
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:9
+load.s3.amazonaws.com CNAME s3-1-w.amazonaws.com
+Answer no:2
+Data lenght:4
+s3-1-w.amazonaws.com A 52.216.65.48
+Packet total length 183
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:9
+load.s3.amazonaws.com CNAME s3-1-w.amazonaws.com
+Packet total length 281
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+s3-1-w.amazonaws.com A 52.216.65.48
+Packet total length 161
+---------------------------------------------------
+Answer count:0
+Packet total length 296
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+idsync-ext.rlcdn.com A 54.152.203.23
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 54.243.156.79
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 107.20.147.185
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 107.22.250.38
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 23.21.147.41
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 23.21.206.73
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 50.19.83.4
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 54.83.19.182
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 54.197.250.167
+Packet total length 140
+---------------------------------------------------
+Answer count:0
+Packet total length 366
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:46
+e.visualdna.com CNAME eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com
+Answer no:2
+Data lenght:4
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 52.19.80.20
+Answer no:3
+Data lenght:4
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 52.30.91.181
+Answer no:4
+Data lenght:4
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 54.154.197.229
+Packet total length 215
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:46
+e.visualdna.com CNAME eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com
+Packet total length 189
+---------------------------------------------------
+Answer count:0
+Packet total length 528
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:37
+gp.symcd.com CNAME ocsp-ds.ws.symantec.com.edgekey.net
+Answer no:2
+Data lenght:25
+ocsp-ds.ws.symantec.com.edgekey.net CNAME e8218.dscb1.akamaiedge.net
+Answer no:3
+Data lenght:4
+e8218.dscb1.akamaiedge.net A 23.37.43.27
+Packet total length 552
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:37
+gp.symcd.com CNAME ocsp-ds.ws.symantec.com.edgekey.net
+Answer no:2
+Data lenght:25
+ocsp-ds.ws.symantec.com.edgekey.net CNAME e8218.dscb1.akamaiedge.net
+Answer no:3
+Data lenght:16
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0384:0000:0000:0000:201a
+Answer no:4
+Data lenght:16
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0386:0000:0000:0000:201a
+Packet total length 496
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:16
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0386:0000:0000:0000:201a
+Answer no:2
+Data lenght:16
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0384:0000:0000:0000:201a
+Packet total length 400
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 141
+---------------------------------------------------
+Answer count:0
+Packet total length 199
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:15
+stun.ekiga.net CNAME stun.sipgate.net
+Answer no:2
+Data lenght:4
+stun.sipgate.net A 217.10.68.152
+Packet total length 141
+---------------------------------------------------
+Answer count:0
+Packet total length 141
+---------------------------------------------------
+Answer count:0
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 54.243.192.35
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 54.235.106.167
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 54.243.45.82
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 54.243.68.187
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 54.243.88.121
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 54.243.97.69
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 54.243.116.238
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 54.243.170.119
+Packet total length 192
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:51
+ni.cz SOA ns1.vultr.com
+Packet total length 296
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:40
+nic.cz SOA a.ns.nic.cz
+Packet total length 218
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:24
+www.bbc.com CNAME www-bbc-com.bbc.net.uk
+Answer no:2
+Data lenght:4
+www-bbc-com.bbc.net.uk A 212.58.246.55
+Answer no:3
+Data lenght:4
+www-bbc-com.bbc.net.uk A 212.58.244.27
+Packet total length 226
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+www.google.com A 216.58.208.196
+Packet total length 238
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:16
+www.google.com AAAA 2a00:1450:4007:080d:0000:0000:0000:2004
+Packet total length 495
+---------------------------------------------------
+Answer count:17
+Answer no:1
+Data lenght:12
+clients1.google.com CNAME clients.l.google.com
+Answer no:2
+Data lenght:4
+clients.l.google.com A 95.168.222.177
+Answer no:3
+Data lenght:4
+clients.l.google.com A 95.168.222.178
+Answer no:4
+Data lenght:4
+clients.l.google.com A 95.168.222.182
+Answer no:5
+Data lenght:4
+clients.l.google.com A 95.168.222.183
+Answer no:6
+Data lenght:4
+clients.l.google.com A 95.168.222.187
+Answer no:7
+Data lenght:4
+clients.l.google.com A 95.168.222.148
+Answer no:8
+Data lenght:4
+clients.l.google.com A 95.168.222.152
+Answer no:9
+Data lenght:4
+clients.l.google.com A 95.168.222.153
+Answer no:10
+Data lenght:4
+clients.l.google.com A 95.168.222.157
+Answer no:11
+Data lenght:4
+clients.l.google.com A 95.168.222.158
+Answer no:12
+Data lenght:4
+clients.l.google.com A 95.168.222.162
+Answer no:13
+Data lenght:4
+clients.l.google.com A 95.168.222.163
+Answer no:14
+Data lenght:4
+clients.l.google.com A 95.168.222.167
+Answer no:15
+Data lenght:4
+clients.l.google.com A 95.168.222.168
+Answer no:16
+Data lenght:4
+clients.l.google.com A 95.168.222.172
+Answer no:17
+Data lenght:4
+clients.l.google.com A 95.168.222.173
+Packet total length 267
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:12
+clients1.google.com CNAME clients.l.google.com
+Answer no:2
+Data lenght:16
+clients.l.google.com AAAA 2a00:1450:4008:0803:0000:0000:0000:200e
+Packet total length 244
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:16
+clients.l.google.com AAAA 2a00:1450:4008:0803:0000:0000:0000:200e
+Packet total length 143
+---------------------------------------------------
+Answer count:0
+Packet total length 400
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 54.225.95.177
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 54.225.184.146
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 184.73.215.34
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 23.21.84.138
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 23.21.147.123
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 23.21.240.237
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 23.23.141.187
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 50.17.197.15
+Packet total length 1137
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:40
+nic.cz SOA a.ns.nic.cz
+Answer no:2
+Data lenght:154
+nic.cz RRSIG 
+Packet total length 1110
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:4
+www.nic.cz A 217.31.205.50
+Answer no:2
+Data lenght:154
+www.nic.cz RRSIG 
+Packet total length 554
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:49
+vortex-win.data.microsoft.com CNAME asimov-win.vortex.data.microsoft.com.akadns.net
+Answer no:2
+Data lenght:6
+asimov-win.vortex.data.microsoft.com.akadns.net CNAME geo.vortex.data.microsoft.com.akadns.net
+Answer no:3
+Data lenght:6
+geo.vortex.data.microsoft.com.akadns.net CNAME db5.vortex.data.microsoft.com.akadns.net
+Answer no:4
+Data lenght:4
+db5.vortex.data.microsoft.com.akadns.net A 64.4.54.254
+Packet total length 249
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:49
+vortex-win.data.microsoft.com CNAME asimov-win.vortex.data.microsoft.com.akadns.net
+Answer no:2
+Data lenght:6
+asimov-win.vortex.data.microsoft.com.akadns.net CNAME geo.vortex.data.microsoft.com.akadns.net
+Answer no:3
+Data lenght:6
+geo.vortex.data.microsoft.com.akadns.net CNAME db5.vortex.data.microsoft.com.akadns.net
+Packet total length 133
+---------------------------------------------------
+Answer count:0
+Packet total length 542
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:51
+settings-win.data.microsoft.com CNAME asimov-win.settings.data.microsoft.com.akadns.net
+Answer no:2
+Data lenght:6
+asimov-win.settings.data.microsoft.com.akadns.net CNAME geo.settings.data.microsoft.com.akadns.net
+Answer no:3
+Data lenght:6
+geo.settings.data.microsoft.com.akadns.net CNAME db5.settings.data.microsoft.com.akadns.net
+Answer no:4
+Data lenght:4
+db5.settings.data.microsoft.com.akadns.net A 40.77.226.249
+Packet total length 253
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:51
+settings-win.data.microsoft.com CNAME asimov-win.settings.data.microsoft.com.akadns.net
+Answer no:2
+Data lenght:6
+asimov-win.settings.data.microsoft.com.akadns.net CNAME geo.settings.data.microsoft.com.akadns.net
+Answer no:3
+Data lenght:6
+geo.settings.data.microsoft.com.akadns.net CNAME db5.settings.data.microsoft.com.akadns.net
+Packet total length 1514
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+kazi.fit.vutbr.cz NSEC 
+Answer no:2
+Data lenght:160
+kazi.fit.vutbr.cz RRSIG 
+Packet total length 381
+---------------------------------------------------
+Answer count:10
+Answer no:1
+Data lenght:4
+crl.globalsign.net A 198.41.214.183
+Answer no:2
+Data lenght:4
+crl.globalsign.net A 198.41.214.184
+Answer no:3
+Data lenght:4
+crl.globalsign.net A 198.41.214.185
+Answer no:4
+Data lenght:4
+crl.globalsign.net A 198.41.214.186
+Answer no:5
+Data lenght:4
+crl.globalsign.net A 198.41.214.187
+Answer no:6
+Data lenght:4
+crl.globalsign.net A 198.41.215.182
+Answer no:7
+Data lenght:4
+crl.globalsign.net A 198.41.215.183
+Answer no:8
+Data lenght:4
+crl.globalsign.net A 198.41.215.184
+Answer no:9
+Data lenght:4
+crl.globalsign.net A 198.41.215.185
+Answer no:10
+Data lenght:4
+crl.globalsign.net A 198.41.215.186
+Packet total length 501
+---------------------------------------------------
+Answer count:10
+Answer no:1
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b7
+Answer no:2
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b8
+Answer no:3
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b9
+Answer no:4
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7ba
+Answer no:5
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b7
+Answer no:6
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b8
+Answer no:7
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b9
+Answer no:8
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6ba
+Answer no:9
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6bb
+Answer no:10
+Data lenght:16
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b6
+Packet total length 1514
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:28
+kazi4.fit.vutbr.cz NSEC 
+Answer no:2
+Data lenght:160
+kazi4.fit.vutbr.cz RRSIG 
+Packet total length 400
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 1514
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:29
+kazi6.fit.vutbr.cz NSEC 
+Answer no:2
+Data lenght:160
+kazi6.fit.vutbr.cz RRSIG 
+Packet total length 1514
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:29
+kbterm.fit.vutbr.cz NSEC 
+Answer no:2
+Data lenght:160
+kbterm.fit.vutbr.cz RRSIG 
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 107.22.215.99
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 23.21.78.116
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 23.23.170.207
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 23.23.222.225
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 50.16.227.116
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 54.204.6.142
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 54.225.207.136
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 54.225.216.1
+Packet total length 291
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+cyrus.cesnet.cz A 195.113.144.245
+Packet total length 358
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:23
+Type:UNKNOWN - SKIPED
+Packet total length 358
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:23
+Type:UNKNOWN - SKIPED
+Packet total length 285
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+cesnet.cz A 195.113.144.230
+Packet total length 400
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 170
+---------------------------------------------------
+Answer count:0
+Packet total length 147
+---------------------------------------------------
+Answer count:0
+Packet total length 199
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:15
+stun.ekiga.net CNAME stun.sipgate.net
+Answer no:2
+Data lenght:4
+stun.sipgate.net A 217.10.68.152
+Packet total length 136
+---------------------------------------------------
+Answer count:0
+Packet total length 123
+---------------------------------------------------
+Answer count:0
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 50.16.197.102
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 23.21.54.131
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 23.21.57.12
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 23.21.73.93
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 23.21.95.141
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 23.23.131.65
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 23.23.175.175
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 23.23.220.195
+Packet total length 118
+---------------------------------------------------
+Answer count:0
+Packet total length 214
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:31
+polling.bbc.co.uk CNAME polling.bbc.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+polling.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Packet total length 487
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:31
+polling.bbc.co.uk CNAME polling.bbc.co.uk.edgekey.net
+Answer no:2
+Data lenght:21
+polling.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net
+Answer no:3
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 416
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 185
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:26
+Type:UNKNOWN - SKIPED
+Packet total length 265
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+vcse-001.4video.cz A 88.208.103.25
+Packet total length 152
+---------------------------------------------------
+Answer count:0
+Packet total length 143
+---------------------------------------------------
+Answer count:0
+Packet total length 416
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 496
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:156
+fit.vutbr.cz RRSIG 
+Answer no:2
+Data lenght:24
+fit.vutbr.cz DS 
+Answer no:3
+Data lenght:36
+fit.vutbr.cz DS 
+Answer no:4
+Data lenght:160
+fit.vutbr.cz RRSIG 
+Packet total length 461
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:156
+vutbr.cz RRSIG 
+Answer no:2
+Data lenght:45
+vutbr.cz SOA rhino.cis.vutbr.cz
+Answer no:3
+Data lenght:156
+vutbr.cz RRSIG 
+Packet total length 416
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 551
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:157
+cesnet.cz RRSIG 
+Answer no:2
+Data lenght:4
+cesnet.cz A 195.113.144.230
+Answer no:3
+Data lenght:285
+cesnet.cz RRSIG 
+Packet total length 401
+---------------------------------------------------
+Answer count:2
+Answer no:1
+Data lenght:155
+muni.cz RRSIG 
+Answer no:2
+Data lenght:155
+muni.cz RRSIG 
+Packet total length 420
+---------------------------------------------------
+Answer count:3
+Answer no:1
+Data lenght:289
+feec.vutbr.cz RRSIG 
+Answer no:2
+Data lenght:14
+feec.vutbr.cz MX <Root>
+Answer no:3
+Data lenght:8
+feec.vutbr.cz MX <Root>
+Packet total length 416
+---------------------------------------------------
+Answer count:1
+Answer no:1
+Data lenght:4
+e3891.g.akamaiedge.net A 104.123.225.99
+Packet total length 391
+---------------------------------------------------
+Answer count:8
+Answer no:1
+Data lenght:4
+ping.chartbeat.net A 54.235.168.251
+Answer no:2
+Data lenght:4
+ping.chartbeat.net A 54.235.180.105
+Answer no:3
+Data lenght:4
+ping.chartbeat.net A 54.243.122.10
+Answer no:4
+Data lenght:4
+ping.chartbeat.net A 54.225.73.95
+Answer no:5
+Data lenght:4
+ping.chartbeat.net A 54.225.207.136
+Answer no:6
+Data lenght:4
+ping.chartbeat.net A 54.225.216.1
+Answer no:7
+Data lenght:4
+ping.chartbeat.net A 54.225.247.92
+Answer no:8
+Data lenght:4
+ping.chartbeat.net A 54.235.140.245
+Packet total length 551
+---------------------------------------------------
+Answer count:4
+Answer no:1
+Data lenght:150
+mvcr.cz RRSIG 
+Answer no:2
+Data lenght:36
+mvcr.cz DS 
+Answer no:3
+Data lenght:155
+mvcr.cz RRSIG 
+Answer no:4
+Data lenght:24
+mvcr.cz NSEC 
+
+
+Zpracovani dokonceno!
+news.bbc.co.uk CNAME newswww.bbc.net.uk 2
+newswww.bbc.net.uk A 212.58.244.56 1
+newswww.bbc.net.uk A 212.58.246.80 1
+www.bbc.co.uk CNAME www.bbc.net.uk 2
+www.bbc.net.uk A 212.58.246.95 2
+www.bbc.net.uk A 212.58.244.71 2
+static.bbci.co.uk CNAME static-bbci.bbc.net.uk 2
+static-bbci.bbc.net.uk CNAME static.bbci.co.uk.edgekey.net 2
+static.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 2
+e3891.g.akamaiedge.net A 104.123.225.99 18
+nav.files.bbci.co.uk CNAME nav.files.bbci.co.uk.edgekey.net 1
+nav.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 1
+static.bbc.co.uk CNAME static.bbc.net.uk 2
+static.bbc.net.uk CNAME static.bbc.co.uk.edgekey.net 2
+static.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 2
+mybbc.files.bbci.co.uk CNAME mybbc.files.bbci.co.uk.edgekey.net 2
+mybbc.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 2
+ichef.bbci.co.uk CNAME ichef-bbci.bbc.net.uk 3
+ichef-bbci.bbc.net.uk CNAME ichef.bbci.co.uk.edgekey.net 3
+ichef.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 3
+ichef-1.bbci.co.uk CNAME ichef.bbci.co.uk 1
+fig.bbc.co.uk CNAME fig.bbc.net.uk 2
+fig.bbc.net.uk A 212.58.244.115 2
+fig.bbc.net.uk A 212.58.246.213 2
+ocsp2.globalsign.com CNAME cdn.globalsigncdn.com 2
+cdn.globalsigncdn.com A 104.16.25.216 2
+cdn.globalsigncdn.com A 104.16.26.216 2
+cdn.globalsigncdn.com A 104.16.27.216 2
+cdn.globalsigncdn.com A 104.16.28.216 2
+cdn.globalsigncdn.com A 104.16.24.216 2
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1bd8 1
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1cd8 1
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:18d8 1
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:19d8 1
+cdn.globalsigncdn.com AAAA 2400:cb00:2048:0001:0000:0000:6810:1ad8 1
+www.bbc.com CNAME www-bbc-com.bbc.net.uk 3
+www-bbc-com.bbc.net.uk A 212.58.244.26 1
+www-bbc-com.bbc.net.uk A 212.58.246.54 1
+ssl.bbc.co.uk CNAME ssl.bbc.net.uk 2
+ssl.bbc.net.uk A 212.58.246.213 1
+ssl.bbc.net.uk A 212.58.244.115 1
+sa.bbc.co.uk CNAME bbc01.sitestat.com 2
+bbc01.sitestat.com A 77.72.116.213 1
+bbc01.sitestat.com A 77.72.118.213 1
+cdn.krxd.net CNAME cdn-traffic-director.krxd.net 2
+cdn-traffic-director.krxd.net CNAME cdn-fastly.krxd.net 2
+cdn-fastly.krxd.net CNAME cdn-fastly.krxd.net.c.global-ssl.fastly.net 2
+cdn-fastly.krxd.net.c.global-ssl.fastly.net CNAME prod.c.ssl.global.fastlylb.net 2
+prod.c.ssl.global.fastlylb.net A 151.101.12.175 1
+pagead2.googlesyndication.com CNAME pagead46.l.doubleclick.net 2
+pagead46.l.doubleclick.net A 216.58.209.194 2
+pagead46.l.doubleclick.net AAAA 2a00:1450:400d:0802:0000:0000:0000:2002 3
+www.googletagservices.com CNAME pagead46.l.doubleclick.net 2
+search.files.bbci.co.uk CNAME search.files.bbci.co.uk.edgekey.net 2
+search.files.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 2
+a1294.w20.akamai.net A 2.21.74.65 1
+a1294.w20.akamai.net A 2.21.74.57 1
+polling.bbc.co.uk CNAME polling.bbc.co.uk.edgekey.net 4
+polling.bbc.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 4
+feeds.bbci.co.uk CNAME feeds.bbci.co.uk.edgekey.net 2
+feeds.bbci.co.uk.edgekey.net CNAME e3891.g.akamaiedge.net 2
+static.chartbeat.com CNAME global.ssl.fastly.net 2
+global.ssl.fastly.net CNAME global-ssl.fastly.net 2
+global-ssl.fastly.net CNAME prod.a.ssl.global.fastlylb.net 2
+prod.a.ssl.global.fastlylb.net A 151.101.12.249 1
+beacon.krxd.net CNAME beacon-a-dub.lb.krxd.net 2
+beacon-a-dub.lb.krxd.net CNAME beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com 2
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.176.178 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.191.93 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.217.205.184 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.192.30 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.201.86 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 54.228.211.70 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.51.180.69 1
+beacon-a-v2-596299490.eu-west-1.elb.amazonaws.com A 46.137.88.70 1
+loadm.exelator.com CNAME loadus.tm.ssl.exelator.com 2
+loadus.tm.ssl.exelator.com CNAME eu-west.load.exelator.com 2
+eu-west.load.exelator.com CNAME load.amexp.exelator.com 2
+load.amexp.exelator.com A 216.52.1.12 1
+usermatch.krxd.net CNAME usermatch-ash-1350078884.us-east-1.elb.amazonaws.com 2
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 107.22.241.77 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 23.21.212.240 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 23.23.219.8 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 50.17.232.169 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 50.19.107.76 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.197.254.190 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.225.133.124 1
+usermatch-ash-1350078884.us-east-1.elb.amazonaws.com A 54.225.210.192 1
+idsync.rlcdn.com CNAME idsync-ext.rlcdn.com 2
+idsync-ext.rlcdn.com A 54.152.203.23 2
+i.w55c.net CNAME dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com 2
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.29.155.24 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.59.116.250 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 54.93.130.65 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 54.93.194.19 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.78.40 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.121.238 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.28.171.120 1
+dxedge-prod-lb-404808087.eu-central-1.elb.amazonaws.com A 52.29.132.94 1
+c.go-mpulse.net CNAME c.go-mpulse.net.cdn.cloudflare.net 2
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.25.190 1
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.26.190 1
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.27.190 1
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.23.190 1
+c.go-mpulse.net.cdn.cloudflare.net A 104.16.24.190 1
+star-mini.c10r.facebook.com A 31.13.84.36 1
+star-mini.c10r.facebook.com AAAA 2a03:2880:f107:0083:face:b00c:0000:25de 1
+edigitalsurvey.com A 46.236.9.36 1
+me-cdn.effectivemeasure.net CNAME traffic.em.io 2
+traffic.em.io A 52.17.222.178 2
+secure-us.imrworldwide.com A 138.108.96.100 1
+shop.bbc.com A 207.159.133.98 1
+search.bbc.co.uk CNAME search.bbc.net.uk 2
+search.bbc.net.uk A 212.58.246.161 2
+search.bbc.net.uk A 212.58.244.158 2
+ssc.api.bbc.com CNAME ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk 2
+ssc.live.3925c5b702a8aaca.xhst.bbci.co.uk CNAME live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com 2
+live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com A 52.210.59.77 1
+live-mybb-componen-1ja6lq9r6z7zi-1331949258.eu-west-1.elb.amazonaws.com A 52.16.236.252 1
+m.bbc.co.uk CNAME m.live.bbc.co.uk 1
+m.live.bbc.co.uk CNAME m-live.bbc.net.uk 1
+m-live.bbc.net.uk A 212.58.246.174 1
+m-live.bbc.net.uk A 212.58.244.163 1
+ocsp.godaddy.com CNAME ocsp.godaddy.com.akadns.net 2
+ocsp.godaddy.com.akadns.net A 50.63.243.230 1
+pages.email.bbc.com CNAME pages.virt.s6.exacttarget.com 2
+pages.virt.s6.exacttarget.com A 68.232.203.80 1
+advertising.bbcworldwide.com CNAME advertising.bbcworldwide.com.edgekey.net 2
+advertising.bbcworldwide.com.edgekey.net CNAME e10296.g.akamaiedge.net 2
+e10296.g.akamaiedge.net A 104.123.201.155 2
+load.s3.amazonaws.com CNAME s3-1-w.amazonaws.com 2
+s3-1-w.amazonaws.com A 52.216.65.48 2
+ping.chartbeat.net A 54.243.156.79 1
+ping.chartbeat.net A 107.20.147.185 1
+ping.chartbeat.net A 107.22.250.38 1
+ping.chartbeat.net A 23.21.147.41 1
+ping.chartbeat.net A 23.21.206.73 1
+ping.chartbeat.net A 50.19.83.4 1
+ping.chartbeat.net A 54.83.19.182 1
+ping.chartbeat.net A 54.197.250.167 1
+e.visualdna.com CNAME eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com 2
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 52.19.80.20 1
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 52.30.91.181 1
+eu-lb-p01-544546018.eu-west-1.elb.amazonaws.com A 54.154.197.229 1
+gp.symcd.com CNAME ocsp-ds.ws.symantec.com.edgekey.net 2
+ocsp-ds.ws.symantec.com.edgekey.net CNAME e8218.dscb1.akamaiedge.net 2
+e8218.dscb1.akamaiedge.net A 23.37.43.27 1
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0384:0000:0000:0000:201a 2
+e8218.dscb1.akamaiedge.net AAAA 2a02:26f0:0132:0386:0000:0000:0000:201a 2
+stun.ekiga.net CNAME stun.sipgate.net 2
+stun.sipgate.net A 217.10.68.152 2
+ping.chartbeat.net A 54.243.192.35 1
+ping.chartbeat.net A 54.235.106.167 1
+ping.chartbeat.net A 54.243.45.82 1
+ping.chartbeat.net A 54.243.68.187 1
+ping.chartbeat.net A 54.243.88.121 1
+ping.chartbeat.net A 54.243.97.69 1
+ping.chartbeat.net A 54.243.116.238 1
+ping.chartbeat.net A 54.243.170.119 1
+ni.cz SOA ns1.vultr.com 1
+nic.cz SOA a.ns.nic.cz 2
+www-bbc-com.bbc.net.uk A 212.58.246.55 1
+www-bbc-com.bbc.net.uk A 212.58.244.27 1
+www.google.com A 216.58.208.196 1
+www.google.com AAAA 2a00:1450:4007:080d:0000:0000:0000:2004 1
+clients1.google.com CNAME clients.l.google.com 2
+clients.l.google.com A 95.168.222.177 1
+clients.l.google.com A 95.168.222.178 1
+clients.l.google.com A 95.168.222.182 1
+clients.l.google.com A 95.168.222.183 1
+clients.l.google.com A 95.168.222.187 1
+clients.l.google.com A 95.168.222.148 1
+clients.l.google.com A 95.168.222.152 1
+clients.l.google.com A 95.168.222.153 1
+clients.l.google.com A 95.168.222.157 1
+clients.l.google.com A 95.168.222.158 1
+clients.l.google.com A 95.168.222.162 1
+clients.l.google.com A 95.168.222.163 1
+clients.l.google.com A 95.168.222.167 1
+clients.l.google.com A 95.168.222.168 1
+clients.l.google.com A 95.168.222.172 1
+clients.l.google.com A 95.168.222.173 1
+clients.l.google.com AAAA 2a00:1450:4008:0803:0000:0000:0000:200e 2
+ping.chartbeat.net A 54.225.95.177 1
+ping.chartbeat.net A 54.225.184.146 1
+ping.chartbeat.net A 184.73.215.34 1
+ping.chartbeat.net A 23.21.84.138 1
+ping.chartbeat.net A 23.21.147.123 1
+ping.chartbeat.net A 23.21.240.237 1
+ping.chartbeat.net A 23.23.141.187 1
+ping.chartbeat.net A 50.17.197.15 1
+nic.cz RRSIG  1
+www.nic.cz A 217.31.205.50 1
+www.nic.cz RRSIG  1
+vortex-win.data.microsoft.com CNAME asimov-win.vortex.data.microsoft.com.akadns.net 2
+asimov-win.vortex.data.microsoft.com.akadns.net CNAME geo.vortex.data.microsoft.com.akadns.net 2
+geo.vortex.data.microsoft.com.akadns.net CNAME db5.vortex.data.microsoft.com.akadns.net 2
+db5.vortex.data.microsoft.com.akadns.net A 64.4.54.254 1
+settings-win.data.microsoft.com CNAME asimov-win.settings.data.microsoft.com.akadns.net 2
+asimov-win.settings.data.microsoft.com.akadns.net CNAME geo.settings.data.microsoft.com.akadns.net 2
+geo.settings.data.microsoft.com.akadns.net CNAME db5.settings.data.microsoft.com.akadns.net 2
+db5.settings.data.microsoft.com.akadns.net A 40.77.226.249 1
+kazi.fit.vutbr.cz NSEC  1
+kazi.fit.vutbr.cz RRSIG  1
+crl.globalsign.net A 198.41.214.183 1
+crl.globalsign.net A 198.41.214.184 1
+crl.globalsign.net A 198.41.214.185 1
+crl.globalsign.net A 198.41.214.186 1
+crl.globalsign.net A 198.41.214.187 1
+crl.globalsign.net A 198.41.215.182 1
+crl.globalsign.net A 198.41.215.183 1
+crl.globalsign.net A 198.41.215.184 1
+crl.globalsign.net A 198.41.215.185 1
+crl.globalsign.net A 198.41.215.186 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b7 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b8 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b9 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7ba 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b7 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b8 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6b9 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6ba 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d6bb 1
+crl.globalsign.net AAAA 2400:cb00:2048:0001:0000:0000:c629:d7b6 1
+kazi4.fit.vutbr.cz NSEC  1
+kazi4.fit.vutbr.cz RRSIG  1
+kazi6.fit.vutbr.cz NSEC  1
+kazi6.fit.vutbr.cz RRSIG  1
+kbterm.fit.vutbr.cz NSEC  1
+kbterm.fit.vutbr.cz RRSIG  1
+ping.chartbeat.net A 107.22.215.99 1
+ping.chartbeat.net A 23.21.78.116 1
+ping.chartbeat.net A 23.23.170.207 1
+ping.chartbeat.net A 23.23.222.225 1
+ping.chartbeat.net A 50.16.227.116 1
+ping.chartbeat.net A 54.204.6.142 1
+ping.chartbeat.net A 54.225.207.136 2
+ping.chartbeat.net A 54.225.216.1 2
+cyrus.cesnet.cz A 195.113.144.245 1
+cesnet.cz A 195.113.144.230 2
+ping.chartbeat.net A 50.16.197.102 1
+ping.chartbeat.net A 23.21.54.131 1
+ping.chartbeat.net A 23.21.57.12 1
+ping.chartbeat.net A 23.21.73.93 1
+ping.chartbeat.net A 23.21.95.141 1
+ping.chartbeat.net A 23.23.131.65 1
+ping.chartbeat.net A 23.23.175.175 1
+ping.chartbeat.net A 23.23.220.195 1
+vcse-001.4video.cz A 88.208.103.25 1
+fit.vutbr.cz RRSIG  2
+fit.vutbr.cz DS  2
+vutbr.cz RRSIG  2
+vutbr.cz SOA rhino.cis.vutbr.cz 1
+cesnet.cz RRSIG  2
+muni.cz RRSIG  2
+feec.vutbr.cz RRSIG  1
+feec.vutbr.cz MX <Root> 2
+ping.chartbeat.net A 54.235.168.251 1
+ping.chartbeat.net A 54.235.180.105 1
+ping.chartbeat.net A 54.243.122.10 1
+ping.chartbeat.net A 54.225.73.95 1
+ping.chartbeat.net A 54.225.247.92 1
+ping.chartbeat.net A 54.235.140.245 1
+mvcr.cz RRSIG  2
+mvcr.cz DS  1
+mvcr.cz NSEC  1
+
+
+*******************DEALLOC**********************
+-r
