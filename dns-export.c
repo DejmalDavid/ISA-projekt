@@ -222,7 +222,7 @@ int main (int argc,char * argv[]) {
 		if(sFlag)
 		{
 			//printf("\n\n------------SENDING-------------\n\n");	//syslog send
-			if(sent_syslog(syslog_ip)==0)
+			if(sent_syslog(syslog_ip)==false)
 			{
 				fprintf(stderr,"Chyba pri odesilani na syslog server!");
 				dealloc(pcapFile,syslog_ip,interface);
@@ -233,8 +233,6 @@ int main (int argc,char * argv[]) {
 		else
 		{
 			tisk_vse();
-			smaz_vse();
-			dealloc(pcapFile,syslog_ip,interface);
 		}
 
 	}
@@ -275,6 +273,7 @@ int main (int argc,char * argv[]) {
 /*********** end *************************************/
 	smaz_vse();
 	dealloc(pcapFile,syslog_ip,interface);
+	return 0;
 }
 
 void tisk_vse()
@@ -683,16 +682,21 @@ bool add_prvek(char * req,char* typ,char *answer)
 void smaz_vse()
 {
 	Prvek *m_pHead = root;
-	Prvek *tmp;
+	Prvek *tmp=NULL;
 	while (m_pHead != NULL){	//projde cely seznam a od zacatku ho zacne odalokov\E1vat a odesilat
-	tmp = m_pHead;
-	m_pHead =m_pHead->pNext;
-	//printf("%s %d\n",tmp->string,tmp->count);
-
-//tady send tmp
-
-	free(tmp->string);
-	free(tmp);
+		tmp = m_pHead;
+		m_pHead =m_pHead->pNext;
+		//printf("%s %d\n",tmp->string,tmp->count);	
+		if(tmp->string != NULL)
+		{
+			free(tmp->string);
+			tmp->string=NULL;
+		}
+		if(tmp != NULL)
+		{
+			free(tmp);
+			tmp=NULL;
+		}
 	}
 }
 
@@ -727,16 +731,19 @@ void dealloc(char* pcap,char* syslog,char* interface)
 	{
 	//	printf("-r\n");
 		free(pcap);
+		pcap=NULL;
 	}
 	if(syslog!=NULL)
 	{
 	//	printf("-s\n");
 		free(syslog);
+		syslog=NULL;
 	}
 	if(interface!=NULL)
 	{
 	//	printf("-i\n");
 		free(interface);
+		interface=NULL;
 	}
 }
 
