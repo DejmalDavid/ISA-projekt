@@ -1,11 +1,13 @@
 /*
  * ISA
- * Zdroje muj projekt do IPK a konstra TCP dokumentace ze stranek predmentu
+ * Zdroje: 
+ * muj projekt do IPK,
+ * konstra TCP dokumentace ze stranek predmentu
+ * ukazka odchytu packetu z predmetu ISA 
+ *
  * vypracoval David Dejmal xdejma00
- * 2018
+ * listopad 2018
  *
- *
- * [0] pouzity kod z https://gist.github.com/listnukira/4045436
  *
  */
 
@@ -64,17 +66,8 @@ void tisk_vse();
 
 int main (int argc,char * argv[]) {
 
-	signal(SIGINT, signal_handler);	//TODO change to sigusr1
+	signal(SIGUSR1, signal_handler);	
 	signal(SIGALRM, alarm_handler);
-
-/*	printf("argc:%d\n",argc);
-	for(int i=1;i<argc;i++)
-	{
-		printf("argv[%d]:%s\n",i,argv[i]);
-	}
-
-
-*/
 
     char error_buffer[PCAP_ERRBUF_SIZE]; /* Size defined in pcap.h */
 
@@ -82,12 +75,9 @@ int main (int argc,char * argv[]) {
 [-r file.pcap] [-i interface] [-s syslog-server] [-t seconds]
 -r string.pcap -i string -s ip string -t int
 */
-
-
 	runTime=60;
 	char*  interface = NULL;
 	char* pcapFile = NULL;
-
 
 	bool rFlag=false;
 	bool iFlag=false;
@@ -130,11 +120,6 @@ int main (int argc,char * argv[]) {
 			lastOpt='t';
 			continue;
 		}
-
-		/*
-		printf("\nlastOpt:%c",lastOpt);
-		printf("\nargv:%s",argv[i]);
-		*/
 
 		//propoji parametry
 		switch(lastOpt)
@@ -212,11 +197,11 @@ int main (int argc,char * argv[]) {
 	{
     		pcap_t *handle = pcap_open_offline(pcapFile, error_buffer);
     		if(handle == NULL)
-				{
-					fprintf(stderr,"Soubor nelze otevrit!");
-								dealloc(pcapFile,syslog_ip,interface);
-        		return 1;
-				}
+		{
+			fprintf(stderr,"Soubor nelze otevrit!");
+			dealloc(pcapFile,syslog_ip,interface);
+       			return 1;
+		}
 		struct bpf_program filter;
     		char filter_exp[] = "port 53 and udp";
     		bpf_u_int32 ip = 0;
@@ -236,7 +221,7 @@ int main (int argc,char * argv[]) {
 
 		if(sFlag)
 		{
-			printf("\n\n------------SENDING-------------\n\n");	//syslog send
+			//printf("\n\n------------SENDING-------------\n\n");	//syslog send
 			if(sent_syslog(syslog_ip)==0)
 			{
 				fprintf(stderr,"Chyba pri odesilani na syslog server!");
@@ -247,7 +232,6 @@ int main (int argc,char * argv[]) {
 		}
 		else
 		{
-			printf("\n\nZpracovani dokonceno!\n");	//printf vse
 			tisk_vse();
 			smaz_vse();
 			dealloc(pcapFile,syslog_ip,interface);
@@ -266,8 +250,8 @@ int main (int argc,char * argv[]) {
     		handle = pcap_open_live(interface,BUFSIZ,0,runTime,error_buffer);
     		if (handle == NULL) {
          		fprintf(stderr, "Could not open interface %s: %s\n", interface, error_buffer);
-         			dealloc(pcapFile,syslog_ip,interface);
-         	return 2;
+         		dealloc(pcapFile,syslog_ip,interface);
+         		return 2;
      		}
 
 
@@ -288,7 +272,7 @@ int main (int argc,char * argv[]) {
 
 
 
-/***********time stampg and end *************************************/
+/*********** end *************************************/
 	smaz_vse();
 	dealloc(pcapFile,syslog_ip,interface);
 }
@@ -314,7 +298,7 @@ bool sent_syslog()
 
 
     server_hostname = syslog_ip;
-    port_number = 514;	//TODO
+    port_number = 514;	
 
     /* 2. ziskani adresy serveru pomoci DNS */
     if ((server = gethostbyname(server_hostname)) == NULL) {
@@ -345,18 +329,18 @@ bool sent_syslog()
 			strcat(buf,cas);
 			strcat(buf," ");
 
-			//get own ip - zdroj [0]
-			char myIP[16];
-			struct sockaddr_in  my_addr;
-			unsigned int myPort;
-			bzero(&my_addr, sizeof(my_addr));
-			unsigned int len = sizeof(my_addr);
-			getsockname(client_socket, (struct sockaddr *) &my_addr, &len);
-			inet_ntop(AF_INET, &my_addr.sin_addr, myIP, sizeof(myIP));
-			myPort = ntohs(my_addr.sin_port);
-			// end of [0]
-
-			strcat(buf,myIP);
+			char name[256];
+			
+			if(gethostname(name,sizeof(name))==0)
+			{
+				strcat(buf,name);
+			}
+			else
+			{
+				fprintf(stderr,"Nepodarilo se zjistit hostname");
+				return false;	
+			}
+			
 
 
 			strcat(buf," dns-export - - - ");
@@ -376,7 +360,7 @@ bool sent_syslog()
 
 			strcat(buf,str);
 
-			printf("Zprava:%s\n",buf);
+			//printf("Zprava:%s\n",buf);
 
 			/* odeslani zpravy na server */
 			serverlen = sizeof(server_address);
@@ -384,6 +368,7 @@ bool sent_syslog()
 			if (bytestx < 0)
 			{
 				fprintf(stderr,"ERROR: sendto");
+				return false;
 			}
 
 			m_pHead =m_pHead->pNext; //posun na dalsi prvek
@@ -405,9 +390,9 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 	//it is response - first bit of flags is 1
 	if(packet_body[pozice]>=0x80)
 	{
-		print_packet_info(packet_body, *packet_header);
+		//print_packet_info(packet_body, *packet_header);
 		answers = 256 * packet_body[pozice+4] + packet_body[pozice+5];
-		printf("Answer count:%d\n",answers);
+		//printf("Answer count:%d\n",answers);
 		pozice=54;
 		for(int i=pozice;;i++)
 		{
@@ -423,7 +408,7 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 		for(int i=1;i<=answers;i++)
 		{
 			strcpy(typ,"UNKNOWN");
-			printf("Answer no:%d\n",i);
+			//printf("Answer no:%d\n",i);
 			get_name(packet_body,name,pozice,0,true,typ);
 			//printf("Name:%s\n",name);
 			if(strcmp(name,"<Root>")==0)
@@ -438,18 +423,18 @@ void packet_handler(u_char *args,const struct pcap_pkthdr *packet_header,const u
 			//printf("Type:%s\n",typ);
 			pozice=pozice+8;
 			dataLenght=256 * packet_body[pozice] + packet_body[pozice+1];
-			printf("Data lenght:%d\n",dataLenght);
+			//printf("Data lenght:%d\n",dataLenght);
 			pozice=pozice+2;
 			if(strcmp("UNKNOWN",typ)==0)
 			{
-				printf("Type:UNKNOWN - SKIPED\n");
+				//printf("Type:UNKNOWN - SKIPED\n");
 				pozice=pozice+dataLenght;
 				continue;
 			}
 			get_name(packet_body,response,pozice,0,false,typ);
 			//printf("response:%s\n",response);
 			pozice=pozice+dataLenght;
-			printf("%s %s %s\n",name,typ,response);
+			//printf("%s %s %s\n",name,typ,response);
 			if(add_prvek(name,typ,response)==false)
 			{
 				fprintf(stderr,"Problem s alokovanim pameti!");
@@ -512,7 +497,7 @@ void get_name(const u_char *packet_body,char * text,int pozice,int index,bool pt
 	if(strcmp("TXT",type)==0)
 	{
 		int count=packet_body[pointer];
-		printf("TXT lenght:%d\n",count);
+		//printf("TXT lenght:%d\n",count);
 		pointer++;
 		text[0]='\"';
 		lenght++;
@@ -737,20 +722,20 @@ void getFormatTime(char* timestamp)
 
 void dealloc(char* pcap,char* syslog,char* interface)
 {
-	printf("\n\n*******************DEALLOC**********************\n");
+	//printf("\n\n*******************DEALLOC**********************\n");
 	if(pcap!=NULL)
 	{
-		printf("-r\n");
+	//	printf("-r\n");
 		free(pcap);
 	}
 	if(syslog!=NULL)
 	{
-		printf("-s\n");
+	//	printf("-s\n");
 		free(syslog);
 	}
 	if(interface!=NULL)
 	{
-		printf("-i\n");
+	//	printf("-i\n");
 		free(interface);
 	}
 }
@@ -765,3 +750,4 @@ void alarm_handler()
 	sent_syslog();
 	alarm(runTime);
 }
+

@@ -1,0 +1,25 @@
+.TH DNS-EXPORT 1
+.SH NAME
+dns-export \- process DNS data and export the selected statistics using Syslog to the central logging server
+.SH SYNOPSIS
+.B dns-export
+[\fB\-r\fR file.pcap]
+[\fB\-i\fR intefrace]
+[\fB\-s\fR syslog-server]
+[\fB\-t\fR seconds]
+.IR
+.SH DESCRIPTION
+Projetc for subject ISA on VUT FIT
+.SH OPTIONS
+.TP
+.BR \-r " file.pcap"
+processes the given pcap file
+.TP
+.BR \-i " name-of-interface"
+listens on the given network interface and handles DNS traffic
+.TP
+.BR \-s " address"
+hostname/ipv4/ipv6 adress syslog server
+.TP
+.BR \-t " time"
+statistics ca1lculation time, default value 60s
